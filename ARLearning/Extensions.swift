@@ -45,3 +45,56 @@ extension float4x4 {
     }
 }
 
+
+extension SCNVector3 {
+    /**
+      Ritorna il modulo del vettore
+     */
+    func length() -> Float {
+        return sqrtf(x*x + y*y + z*z)
+    }
+    
+    /**
+      Ritorna un vettore normalizzato senza cambiare l'originale
+     */
+    func normalized() -> SCNVector3 {
+        return self / length()
+    }
+    
+    /**
+      Normalizza il vettore e ritorna il valore.
+     */
+    mutating func normalize() {
+        self = normalized()
+    }
+    
+    /**
+      Calcola la distanza tra due vettori con Pitagora!
+     */
+    func distance(vector: SCNVector3) -> Float {
+        return (self - vector).length()
+    }
+    
+}
+/**
+  Implementa la differenza tra due vettori
+ */
+func - (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+    return SCNVector3Make(left.x - right.x, left.y - right.y, left.z - right.z)
+}
+
+/**
+ implementa la divisione per scalari
+ */
+func / (vector: SCNVector3, scalar: Float) -> SCNVector3 {
+    return SCNVector3Make(vector.x / scalar, vector.y / scalar, vector.z / scalar)
+}
+
+/**
+ Implementa la moltiplicazioni per scalari
+ */
+func * (vector: SCNVector3, scalar: Float) -> SCNVector3 {
+    return SCNVector3Make(vector.x * scalar,
+                   vector.y * scalar,
+                   vector.z * scalar)
+}

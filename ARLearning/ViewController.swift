@@ -17,11 +17,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var detectPlane = true
     var placeBalls = true
     var placeField = true
+    var velocityToApply:Float = 1.0
     
+    @IBOutlet weak var velocityLabel: UILabel!
     
     var currentCubeNode: SCNNode?
     var fieldNode: SCNNode?
-    let cube = SCNSphere(radius: 0.15)//SCNBox(width: 0.15, height: 0.15, length: 0.15, chamferRadius: 0)
+    let cube = SCNBox(width: 0.15, height: 0.15, length: 0.15, chamferRadius: 0)
     
     var startTouchTime: TimeInterval!
     var endTouchTime: TimeInterval!
@@ -74,6 +76,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
     
+    @IBAction func stepEvent(_ sender: UIStepper) {
+        velocityLabel.text = ("\(sender.value)")
+        velocityToApply = Float(sender.value)
+    }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
@@ -93,21 +99,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func throwCube() {
         
         guard let cubeNode = currentCubeNode else { return }
-        guard let startingPosition = startPosition else {
+        guard let startingPosition = startPosition?.normalized() else {
             print("startingPoint not found")
             return
         }
-        guard let endingPosition = endPosition else {
+        guard let endingPosition = endPosition?.normalized() else {
             print("endingPoint not found")
             return
         }
         
-//        let timeDifference = endTouchTime - startTouchTime
+        var distanceVector = endingPosition - startingPosition
+        distanceVector.normalize()
         
-        let impulseVector = SCNVector3(
-            ((endPosition?.x)! - (startPosition?.x)!) * 10,
-            ((endPosition?.y)! - (startPosition?.y)!) * 10,
-            ((endPosition?.z)! - (startPosition?.z)!) * 10)
+      
+       let timeDifference = endTouchTime - startTouchTime
+        
+        
+//        Calcolo del coefficiente per la forza del lancio
+        
+        let velocity = (Float(min(max(1 - timeDifference, 0.1), 1.0))) * self.velocityToApply
+        print(velocity)
+        
+        let impulseVector = distanceVector * velocity
         
 //        print("the force is \(impulseVector)")
         cubeNode.physicsBody?.applyForce(impulseVector, asImpulse: true)
@@ -146,10 +159,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 result.node.isHidden = true
             }
             
-            if myCubes.contains(result.node) || result.node.parent?.name == "ball" {
-                currentCubeNode = result.node
-                
+            
+            if result.node.parent?.name == "ball" {
+                currentCubeNode = result.node.parent!
+                print("Result")
                 startPosition = result.worldCoordinates
+                startTouchTime = Date().timeIntervalSince1970
             }
 
             if placeField && hitTestPlane.count > 0 {
@@ -173,23 +188,27 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             else if placeBalls {
                 
-                let cubeNode = SCNNode(geometry: cube)
+//                let cubeNode = SCNNode(geometry: cube)
+//
+//
+                let playerNode = fieldNode?.childNode(withName: "ball", recursively: true)?.copy() as! SCNNode
                 
                 
-                result.node.addChildNode(cubeNode)
+                
+                result.node.addChildNode(playerNode)
 
                 let x = result.localCoordinates.x
                 let y = result.localCoordinates.y
                 let z = result.localCoordinates.z + 1
-                cubeNode.position = SCNVector3(x,y,z)
+                playerNode.position = SCNVector3(x,y,z)
 
                 print(result.localCoordinates)
-                print("Cube Position \(cubeNode.position)")
+                print("Cube Position \(playerNode.position)")
                 
-                cubeNode.name = "Cube"
-                let cubePhysicsShape = SCNPhysicsShape(geometry: cube, options: [SCNPhysicsShape.Option.scale : 0.5])
-                cubeNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: cubePhysicsShape)
-                myCubes.insert(cubeNode)
+                playerNode.name = "Cube"
+//                let cubePhysicsShape = SCNPhysicsShape(geometry: cube, options: [SCNPhysicsShape.Option.scale : 0.5])
+//                cubeNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: cubePhysicsShape)
+                myCubes.insert(playerNode)
 
             }
             
