@@ -15,6 +15,7 @@
 		32C778EC202C4B9400ED436F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C778EA202C4B9400ED436F /* LaunchScreen.storyboard */; };
 		32C778F4202C4DA200ED436F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C778F3202C4DA200ED436F /* Extensions.swift */; };
 		32C778F6202C4E0D00ED436F /* ViewControllerARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C778F5202C4E0D00ED436F /* ViewControllerARSessionDelegate.swift */; };
+		E329D4DF20342D72009D647A /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E329D4DE20342D72009D647A /* GameManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		32C778ED202C4B9400ED436F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C778F3202C4DA200ED436F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		32C778F5202C4E0D00ED436F /* ViewControllerARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerARSessionDelegate.swift; sourceTree = "<group>"; };
+		E329D4DE20342D72009D647A /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				32C778E8202C4B9400ED436F /* Assets.xcassets */,
 				32C778EA202C4B9400ED436F /* LaunchScreen.storyboard */,
 				32C778ED202C4B9400ED436F /* Info.plist */,
+				E329D4DE20342D72009D647A /* GameManager.swift */,
 			);
 			path = ARLearning;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				32C778F6202C4E0D00ED436F /* ViewControllerARSessionDelegate.swift in Sources */,
 				32C778F4202C4DA200ED436F /* Extensions.swift in Sources */,
 				32C778E0202C4B9300ED436F /* AppDelegate.swift in Sources */,
+				E329D4DF20342D72009D647A /* GameManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
