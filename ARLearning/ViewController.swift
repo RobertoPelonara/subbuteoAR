@@ -42,6 +42,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
+        
         // Create a new scene
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
         
@@ -149,6 +150,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+
         if touches.count > 0 {
             
             let hitTestPlane = sceneView.hitTest((touches.first?.location(in: sceneView))!, types: ARHitTestResult.ResultType.existingPlaneUsingExtent)
