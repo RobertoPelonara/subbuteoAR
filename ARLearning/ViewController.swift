@@ -207,10 +207,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 }
                 
                 return
-            
+            //spawn di label di errore, dopo 3 secondi scompare
             }
             
   if placeBalls {
+    //spawn di palle, codice da eliminare
             
 //                let cubeNode = SCNNode(geometry: cube)
 //
