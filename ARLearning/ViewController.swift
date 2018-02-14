@@ -155,7 +155,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if fieldScene != nil {
             errorLabel.isHidden = true
-            return
         }
         
         if touches.count > 0 {
@@ -200,7 +199,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
               
                 return
            
-            } else {
+            } else if fieldScene == nil {
                 errorLabel.isHidden = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3){
                     self.errorLabel.isHidden = true
@@ -209,33 +208,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 return
             //spawn di label di errore, dopo 3 secondi scompare
             }
-            
-  if placeBalls {
-    //spawn di palle, codice da eliminare
-            
-//                let cubeNode = SCNNode(geometry: cube)
-//
-//
-                let playerNode = fieldNode?.childNode(withName: "ball", recursively: true)?.copy() as! SCNNode
-                
-                
-                
-                result.node.addChildNode(playerNode)
 
-                let x = result.localCoordinates.x
-                let y = result.localCoordinates.y
-                let z = result.localCoordinates.z + 1
-                playerNode.position = SCNVector3(x,y,z)
-
-                print(result.localCoordinates)
-                print("Cube Position \(playerNode.position)")
-                
-                playerNode.name = "Cube"
-//                let cubePhysicsShape = SCNPhysicsShape(geometry: cube, options: [SCNPhysicsShape.Option.scale : 0.5])
-//                cubeNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: cubePhysicsShape)
-                myCubes.insert(playerNode)
-
-            }
             
         }
         
