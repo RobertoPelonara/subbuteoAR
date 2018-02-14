@@ -126,7 +126,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let velocity = (Float(min(max(1 - timeDifference, 0.1), 1.0))) * self.velocityToApply
         print(velocity)
         
-        let impulseVector = distanceVector * velocity
+        var impulseVector = distanceVector * velocity
+        impulseVector.y = 0
         
 //        print("the force is \(impulseVector)")
         cubeNode.physicsBody?.applyForce(impulseVector, asImpulse: true)
