@@ -3,15 +3,15 @@ import MultipeerConnectivity
 
 protocol MPCManagerDelegate {
     
-    func foundPeer()
+    func foundPeer()//chiamata se un nuovo peer si connette
     
-    func lostPeer()
+    func lostPeer()//chiamata se un peer si è disconnesso
     
-    func invitationWasReceived(fromPeer: String)
+    func invitationWasReceived(fromPeer: String)// chiamata quando ricevi un invito, deve mostrare il pop up per accettare ecc
     
-    func connectedWithPeer(peerID: MCPeerID)
+    func connectedWithPeer(peerID: MCPeerID)//chiamata quando un nuovo peer si connette con te
     
-    func handleReceivedData(data: [String:AnyObject])
+    func handleReceivedData(data: [String:AnyObject]) //chiamata quando ricevi un dato
 }
 
 class MPCManager: NSObject,MCSessionDelegate,MCNearbyServiceAdvertiserDelegate,MCBrowserViewControllerDelegate {
@@ -48,6 +48,34 @@ class MPCManager: NSObject,MCSessionDelegate,MCNearbyServiceAdvertiserDelegate,M
         self.invitationHandler = invitationHandler
         
         delegate?.invitationWasReceived(fromPeer: peerID.displayName)
+        
+        
+        /*
+         Solitamente ci va questa funzione qua
+         
+         func invitationWasReceived(fromPeer: String) {
+ 
+            let alert = UIAlertController(title: "", message: "\(fromPeer) wants to play with you.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.view.tintColor = UIColor.init(red: 153/255, green: 39/255, blue: 199/255, alpha: 1)
+ 
+            let acceptAction: UIAlertAction = UIAlertAction(title: "Accept", style: UIAlertActionStyle.default) { (alertAction) -> Void in
+                self.appDelegate.mpcManager.invitationHandler(true, self.appDelegate.mpcManager.session)
+            }
+ 
+            let declineAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (alertAction) -> Void in
+                self.appDelegate.mpcManager.invitationHandler(false,nil)
+            }
+ 
+            alert.addAction(acceptAction)
+            alert.addAction(declineAction)
+ 
+            OperationQueue.main.addOperation { () -> Void in
+                self.present(alert, animated: true, completion: nil)
+            }
+ 
+        }
+        */
+        
         
         
     }
