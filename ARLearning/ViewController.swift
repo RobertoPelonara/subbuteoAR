@@ -57,6 +57,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let configuration = ARWorldTrackingConfiguration()
         
         configuration.planeDetection = .horizontal
+        configuration.worldAlignment = .gravityAndHeading
+        
         
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         
@@ -149,7 +151,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if touches.count > 0 {
             
-            let hitTestPlane = sceneView.hitTest((touches.first?.location(in: sceneView))!, types: .existingPlaneUsingExtent)
+            let hitTestPlane = sceneView.hitTest((touches.first?.location(in: sceneView))!, types: ARHitTestResult.ResultType.existingPlaneUsingExtent)
             
             guard let result = sceneView.hitTest((touches.first?.location(in: sceneView))!, options: [.searchMode : SCNHitTestSearchMode.all.rawValue]).first else {
                 return
@@ -162,7 +164,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             if result.node.parent?.name == "ball" {
                 currentCubeNode = result.node.parent!
-                print("Result")
                 startPosition = result.worldCoordinates
                 startTouchTime = Date().timeIntervalSince1970
             }
@@ -173,11 +174,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 fieldNode = fieldScene?.rootNode
                
                 
-                let x = (hitTestPlane.first?.worldTransform.position.x)!
-                let y = (hitTestPlane.first?.worldTransform.position.y)!
-                let z = (hitTestPlane.first?.worldTransform.position.z)!
                 
-                fieldNode?.position = SCNVector3(x,y,z)
+                let x = (hitTestPlane.first?.anchor?.transform.position.x)!
+                let y = (hitTestPlane.first?.anchor?.transform.position.y)!
+                let z = (hitTestPlane.first?.anchor?.transform.position.z)!
+                
+                
+                
+                fieldNode?.simdTransform.position = float3(x,y,z)
                 fieldNode?.name = "field"
                 
                 sceneView.scene.rootNode.addChildNode(fieldNode!)

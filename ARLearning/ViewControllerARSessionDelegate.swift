@@ -22,7 +22,7 @@ extension ViewController: ARSessionDelegate {
             let height = CGFloat(anchor.extent.z)
             let plane = SCNPlane(width: width, height: height)
             
-            plane.materials.first?.diffuse.contents = UIColor.black.withAlphaComponent(0.0)
+            plane.materials.first?.diffuse.contents = UIColor.black.withAlphaComponent(0.5)
             
             let planeNode = SCNNode(geometry: plane)
             
