@@ -14,6 +14,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     
+    @IBOutlet weak var errorLabel: UILabel!
     var detectPlane = true
     var placeBalls = true
     var placeField = true
@@ -33,6 +34,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     var myCubes: Set<SCNNode> = []
     
+    var fieldScene: SCNScene!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +44,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
+        
         
         // Create a new scene
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
@@ -149,6 +153,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if fieldScene != nil {
+            errorLabel.isHidden = true
+            return
+        }
+        
         if touches.count > 0 {
             
             let hitTestPlane = sceneView.hitTest((touches.first?.location(in: sceneView))!, types: ARHitTestResult.ResultType.existingPlaneUsingExtent)
@@ -170,7 +179,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
             if placeField && hitTestPlane.count > 0 {
                 
-                let fieldScene = SCNScene(named: "art.scnassets/campo.scn")
+                fieldScene = SCNScene(named: "art.scnassets/campo.scn")
                 fieldNode = fieldScene?.rootNode
                
                 
@@ -187,11 +196,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 sceneView.scene.rootNode.addChildNode(fieldNode!)
                 
                 placeField = false
+                
+              
                 return
+           
+            } else {
+                errorLabel.isHidden = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                    self.errorLabel.isHidden = true
+                }
+                
+                return
+            //spawn di label di errore, dopo 3 secondi scompare
             }
             
-            else if placeBalls {
-                
+  if placeBalls {
+    //spawn di palle, codice da eliminare
+            
 //                let cubeNode = SCNNode(geometry: cube)
 //
 //

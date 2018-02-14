@@ -72,6 +72,7 @@
 				32C778E8202C4B9400ED436F /* Assets.xcassets */,
 				32C778EA202C4B9400ED436F /* LaunchScreen.storyboard */,
 				32C778ED202C4B9400ED436F /* Info.plist */,
+				E329D4DE20342D72009D647A /* GameManager.swift */,
 			);
 			path = ARLearning;
 			sourceTree = "<group>";
@@ -153,6 +154,7 @@
 				FE7E3F552034443E00C672A0 /* MPCManager.swift in Sources */,
 				32C778F4202C4DA200ED436F /* Extensions.swift in Sources */,
 				32C778E0202C4B9300ED436F /* AppDelegate.swift in Sources */,
+				E329D4DF20342D72009D647A /* GameManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
