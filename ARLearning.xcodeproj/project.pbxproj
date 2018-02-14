@@ -15,6 +15,7 @@
 		32C778EC202C4B9400ED436F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C778EA202C4B9400ED436F /* LaunchScreen.storyboard */; };
 		32C778F4202C4DA200ED436F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C778F3202C4DA200ED436F /* Extensions.swift */; };
 		32C778F6202C4E0D00ED436F /* ViewControllerARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C778F5202C4E0D00ED436F /* ViewControllerARSessionDelegate.swift */; };
+		FE7E3F552034443E00C672A0 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7E3F542034443E00C672A0 /* MPCManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		32C778ED202C4B9400ED436F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C778F3202C4DA200ED436F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		32C778F5202C4E0D00ED436F /* ViewControllerARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerARSessionDelegate.swift; sourceTree = "<group>"; };
+		FE7E3F542034443E00C672A0 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				32C778DF202C4B9300ED436F /* AppDelegate.swift */,
 				32C778F3202C4DA200ED436F /* Extensions.swift */,
 				32C778F5202C4E0D00ED436F /* ViewControllerARSessionDelegate.swift */,
+				FE7E3F542034443E00C672A0 /* MPCManager.swift */,
 				32C778E1202C4B9300ED436F /* art.scnassets */,
 				32C778E3202C4B9300ED436F /* ViewController.swift */,
 				32C778E5202C4B9300ED436F /* Main.storyboard */,
@@ -147,6 +150,7 @@
 			files = (
 				32C778E4202C4B9300ED436F /* ViewController.swift in Sources */,
 				32C778F6202C4E0D00ED436F /* ViewControllerARSessionDelegate.swift in Sources */,
+				FE7E3F552034443E00C672A0 /* MPCManager.swift in Sources */,
 				32C778F4202C4DA200ED436F /* Extensions.swift in Sources */,
 				32C778E0202C4B9300ED436F /* AppDelegate.swift in Sources */,
 			);
@@ -292,13 +296,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8V8B595TM4;
+				DEVELOPMENT_TEAM = F27C7JQD27;
 				INFOPLIST_FILE = ARLearning/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.antoniosirica.ARLearning;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carlosantoro.ARLearning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -310,13 +314,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8V8B595TM4;
+				DEVELOPMENT_TEAM = F27C7JQD27;
 				INFOPLIST_FILE = ARLearning/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.antoniosirica.ARLearning;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carlosantoro.ARLearning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

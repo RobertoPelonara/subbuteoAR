@@ -20,8 +20,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>ARKit</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string></string>
 	<key>NSCameraUsageDescription</key>
-	<string>This application will use the camera for Augmented Reality.</string>
+	<string>ARKit</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
