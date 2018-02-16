@@ -71,7 +71,6 @@ class ViewController: UIViewController {
         
         
         
-        GameManager.shared
         
         sceneView.delegate = self
         sceneView.session.delegate = self
@@ -83,6 +82,7 @@ class ViewController: UIViewController {
           // Hook up status view controller callback(s).
         statusViewController.restartExperienceHandler = { [unowned self] in
             self.restartExperience()
+            self.navigationController?.isNavigationBarHidden = true
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showVirtualObjectSelectionViewController))

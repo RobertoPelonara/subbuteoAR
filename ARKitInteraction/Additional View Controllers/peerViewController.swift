@@ -41,8 +41,11 @@ class peerViewController: UIViewController, MPCManagerDelegate {
     }
     
     func connectedWithPeer(peerID: MCPeerID) {
-        let segue = UIStoryboardSegue(identifier: "goToGame", source: MPCManager.shared.browser!, destination: UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gameView"))
-        performSegue(withIdentifier: "goToGame", sender: self)    }
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyBoard.instantiateViewController(withIdentifier: "gameView") as! ViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
+    }
     
     func handleReceivedData(data: [String : AnyObject]) {
         
