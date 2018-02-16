@@ -173,17 +173,45 @@ class MPCManager: NSObject,MCSessionDelegate,MCNearbyServiceAdvertiserDelegate,M
         return success
     }
     
-    func sendData(codableToSend codable: Codable, toPeers targets: [MCPeerID]) -> Bool{
+    func sendData(foulDataToSend foulData: FoulData, toPeers targets: [MCPeerID]) -> Bool{
         
         let encoder = JSONEncoder()
         do {
-            let jsonData = try encoder.encode(codable as? Any)
-            let jsonString = String(data: jsonData, encoding: .utf8)
-            print("JSON String : " + jsonString!)
+            let jsonData = try encoder.encode(foulData)
+            let _ = String(data: jsonData, encoding: .utf8)
+            try session.send(jsonData, toPeers: targets, with: .reliable)
+            return true
         }
         catch {
+            return false
         }
+    }
+    
+    func sendData(shotDataToSend shotData: ShotData, toPeers targets: [MCPeerID]) -> Bool{
         
+        let encoder = JSONEncoder()
+        do {
+            let jsonData = try encoder.encode(shotData)
+            let _ = String(data: jsonData, encoding: .utf8)
+            try session.send(jsonData, toPeers: targets, with: .reliable)
+            return true
+        }
+        catch {
+            return false
+        }
+    }
+    func sendData(goalDataToSend goalData: GoalData, toPeers targets: [MCPeerID]) -> Bool{
+        
+        let encoder = JSONEncoder()
+        do {
+            let jsonData = try encoder.encode(goalData)
+            let _ = String(data: jsonData, encoding: .utf8)
+            try session.send(jsonData, toPeers: targets, with: .reliable)
+            return true
+        }
+        catch {
+            return false
+        }
     }
     
     func sendData(dictionaryWithData dictionary: Dictionary<String, Float>, toPeer targetPeers: [MCPeerID]) -> Bool {

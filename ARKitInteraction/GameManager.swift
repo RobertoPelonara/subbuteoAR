@@ -9,17 +9,21 @@
 import Foundation
 import SceneKit
 
+
+
+
+
 struct FoulData: Codable {
     
     var team: String
     var position: SCNVector3
  }
 
-struct goalData: Codable {
+struct GoalData: Codable {
     var team: String
 }
 
-struct shotData: Codable {
+struct ShotData: Codable {
     var force: SCNVector3
     var nodeName: String
 }
