@@ -60,7 +60,7 @@ extension CGPoint {
 
 // MARK: - Vector Operations
 
-extension SCNVector3 {
+extension SCNVector3: Codable {
     /**
      Ritorna il modulo del vettore
      */
@@ -75,6 +75,7 @@ extension SCNVector3 {
         return self / length()
     }
     
+    
     /**
      Normalizza il vettore e ritorna il valore.
      */
@@ -88,6 +89,21 @@ extension SCNVector3 {
     func distance(vector: SCNVector3) -> Float {
         return (self - vector).length()
     }
+    
+    public init(from decoder: Decoder) throws {
+        var container = try decoder.unkeyedContainer()
+        self.x = try container.decode(Float.self)
+        self.y = try container.decode(Float.self)
+        self.z = try container.decode(Float.self)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.unkeyedContainer()
+        try container.encode(self.x)
+        try container.encode(self.y)
+        try container.encode(self.z)
+    }
+
     
 }
 /**

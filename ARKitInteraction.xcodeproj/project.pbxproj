@@ -27,6 +27,7 @@
 		C8D71A001F3B7D3D0086AD64 /* VirtualObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D719FF1F3B7D3D0086AD64 /* VirtualObject.swift */; };
 		E396027B2036D99000CD4A1C /* ViewController+PlayerMovements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396027A2036D99000CD4A1C /* ViewController+PlayerMovements.swift */; };
 		E3B4CE6B2036D1460037691D /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B4CE6A2036D1460037691D /* GameManager.swift */; };
+		E3C5912020372903002877C4 /* peerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C5911F20372903002877C4 /* peerViewController.swift */; };
 		E3FC55872035A94100BA43A0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC55862035A94100BA43A0 /* Extensions.swift */; };
 		FE8782DF20371FA800970449 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8782DE20371FA800970449 /* MPCManager.swift */; };
 		FE8782E1203720B100970449 /* ViewController+MPCManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8782E0203720B100970449 /* ViewController+MPCManagerDelegate.swift */; };
@@ -56,6 +57,7 @@
 		C8D719FF1F3B7D3D0086AD64 /* VirtualObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
 		E396027A2036D99000CD4A1C /* ViewController+PlayerMovements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+PlayerMovements.swift"; sourceTree = "<group>"; };
 		E3B4CE6A2036D1460037691D /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		E3C5911F20372903002877C4 /* peerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peerViewController.swift; sourceTree = "<group>"; };
 		E3FC55862035A94100BA43A0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EAEF9C5F74BF28644D892CF2 /* SampleCode.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		FE8782DE20371FA800970449 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		1488324B1EFC3EBF0043E0AB /* Additional View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E3C5911F20372903002877C4 /* peerViewController.swift */,
 				C41366B81EB80DD400EC054A /* StatusViewController.swift */,
 			);
 			path = "Additional View Controllers";
@@ -259,6 +262,7 @@
 				11BD822A1F09D750003F11C8 /* ViewController+ObjectSelection.swift in Sources */,
 				1488323F1EFC378A0043E0AB /* ViewController+Actions.swift in Sources */,
 				3929C48E1E89EC2C00E00B60 /* ViewController.swift in Sources */,
+				E3C5912020372903002877C4 /* peerViewController.swift in Sources */,
 				C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */,
 				39C0B95A1E9C6B1F003FCA0C /* Utilities.swift in Sources */,
 				C8C12A711F29277B00B011FE /* ViewController+ARSCNViewDelegate.swift in Sources */,

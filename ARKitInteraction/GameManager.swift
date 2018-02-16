@@ -9,6 +9,21 @@
 import Foundation
 import SceneKit
 
+struct FoulData: Codable {
+    
+    var team: String
+    var position: SCNVector3
+ }
+
+struct goalData: Codable {
+    var team: String
+}
+
+struct shotData: Codable {
+    var force: SCNVector3
+    var nodeName: String
+}
+
 enum Turn {
     case home
     case away

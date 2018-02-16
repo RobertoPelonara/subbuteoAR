@@ -173,6 +173,19 @@ class MPCManager: NSObject,MCSessionDelegate,MCNearbyServiceAdvertiserDelegate,M
         return success
     }
     
+    func sendData(codableToSend codable: Codable, toPeers targets: [MCPeerID]) -> Bool{
+        
+        let encoder = JSONEncoder()
+        do {
+            let jsonData = try encoder.encode(codable as? Any)
+            let jsonString = String(data: jsonData, encoding: .utf8)
+            print("JSON String : " + jsonString!)
+        }
+        catch {
+        }
+        
+    }
+    
     func sendData(dictionaryWithData dictionary: Dictionary<String, Float>, toPeer targetPeers: [MCPeerID]) -> Bool {
         
         let dataToSend = NSKeyedArchiver.archivedData(withRootObject: dictionary)
