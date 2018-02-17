@@ -90,17 +90,23 @@ class VirtualObjectARView: ARSCNView {
     let incrementCoefficient: CGFloat = 5/20
     
     
-     func hitTest(_ point: CGPoint, options: [SCNHitTestOption : Any]? = nil, node: SCNNode) -> [SCNHitTestResult] {
+     func hitTest(_ point: CGPoint, options: [SCNHitTestOption : Any]? = nil, node: SCNNode?) -> [SCNHitTestResult] {
         var increment = incrementCoefficient
         var returns = [SCNHitTestResult]()
         var newPoint = CGPoint.init(x: point.x - threshold, y: point.y - threshold)
         for xIncrement in stride(from: increment, to: threshold, by: +incrementCoefficient) {
             for yIncrement in stride(from: increment, to: threshold, by: +incrementCoefficient){
                 let hitTest = super.hitTest(newPoint, options: options)
+                if node != nil{
                 for result in hitTest {
                     if result.node == node {
                         returns.append(result)
                     }
+                }
+                }
+                else
+                {
+                    returns.append(contentsOf: hitTest)
                 }
                 newPoint.y += yIncrement
             }
