@@ -33,7 +33,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		107202AA9DC9C60FDC04CBA9 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		147D76491EFC36070000FEBF /* ViewController+ObjectSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ObjectSelection.swift"; sourceTree = "<group>"; };
 		1488323E1EFC378A0043E0AB /* ViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Actions.swift"; sourceTree = "<group>"; };
 		148832401EFC3B250043E0AB /* FocusSquareSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
@@ -57,7 +56,6 @@
 		E396027A2036D99000CD4A1C /* ViewController+PlayerMovements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+PlayerMovements.swift"; sourceTree = "<group>"; };
 		E3B4CE6A2036D1460037691D /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		E3C5911F20372903002877C4 /* peerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peerViewController.swift; sourceTree = "<group>"; };
-		EAEF9C5F74BF28644D892CF2 /* SampleCode.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		FE8782DE20371FA800970449 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
 		FE8782E0203720B100970449 /* ViewController+MPCManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+MPCManagerDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,21 +109,11 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		2A98C51DEB898D7C78968060 /* LICENSE */ = {
-			isa = PBXGroup;
-			children = (
-				107202AA9DC9C60FDC04CBA9 /* LICENSE.txt */,
-			);
-			path = LICENSE;
-			sourceTree = "<group>";
-		};
 		3929C47F1E89EC2C00E00B60 = {
 			isa = PBXGroup;
 			children = (
 				3929C48A1E89EC2C00E00B60 /* ARKitInteraction */,
 				3929C4891E89EC2C00E00B60 /* Products */,
-				53900DCAA99485003A023C78 /* Configuration */,
-				2A98C51DEB898D7C78968060 /* LICENSE */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,14 +147,6 @@
 				1488324C1EFC3ED00043E0AB /* Resources */,
 			);
 			path = ARKitInteraction;
-			sourceTree = "<group>";
-		};
-		53900DCAA99485003A023C78 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				EAEF9C5F74BF28644D892CF2 /* SampleCode.xcconfig */,
-			);
-			name = Configuration;
 			sourceTree = "<group>";
 		};
 		C40DF57B1EC2330700D9D59E /* Virtual Objects */ = {
@@ -292,7 +272,6 @@
 /* Begin XCBuildConfiguration section */
 		3929C4981E89EC2C00E00B60 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EAEF9C5F74BF28644D892CF2 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -350,7 +329,6 @@
 		};
 		3929C4991E89EC2C00E00B60 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EAEF9C5F74BF28644D892CF2 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -401,7 +379,6 @@
 		};
 		3929C49B1E89EC2C00E00B60 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EAEF9C5F74BF28644D892CF2 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -421,7 +398,6 @@
 		};
 		3929C49C1E89EC2C00E00B60 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EAEF9C5F74BF28644D892CF2 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;

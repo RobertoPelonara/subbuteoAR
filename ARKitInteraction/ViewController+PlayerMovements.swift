@@ -11,7 +11,7 @@ extension ViewController {
     
       override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let result = sceneView.hitTest((touches.first?.location(in: sceneView))!, options: [.searchMode : SCNHitTestSearchMode.closest.rawValue, SCNHitTestOption.boundingBoxOnly: true, SCNHitTestOption.categoryBitMask : 1]).first
+        let result = sceneView.hitTest((touches.first?.location(in: sceneView))!, options: [.searchMode : SCNHitTestSearchMode.closest.rawValue, SCNHitTestOption.boundingBoxOnly: true, SCNHitTestOption.categoryBitMask : 1], node: nil).first
         if result == nil {
             return
         }
