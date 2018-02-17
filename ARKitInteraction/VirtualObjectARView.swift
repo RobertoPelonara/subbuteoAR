@@ -1,15 +1,15 @@
 /*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-A custom `ARSCNView` configured for the requirements of this project.
-*/
+ See LICENSE folder for this sample’s licensing information.
+ 
+ Abstract:
+ A custom `ARSCNView` configured for the requirements of this project.
+ */
 
 import Foundation
 import ARKit
 
 class VirtualObjectARView: ARSCNView {
-
+    
     // MARK: Position Testing
     
     /// Hit tests against the `sceneView` to find an object at the provided point.
@@ -19,30 +19,30 @@ class VirtualObjectARView: ARSCNView {
         
         return hitTestResults.lazy.flatMap { result in
             return VirtualObject.existingObjectContainingNode(result.node)
-        }.first
+            }.first
     }
-	
+    
     func smartHitTest(_ point: CGPoint,
                       infinitePlane: Bool = false,
                       objectPosition: float3? = nil,
                       allowedAlignments: [ARPlaneAnchor.Alignment] = [.horizontal, .vertical]) -> ARHitTestResult? {
-		
-		// Perform the hit test.
-		let results = hitTest(point, types: [.existingPlaneUsingGeometry, .estimatedVerticalPlane, .estimatedHorizontalPlane])
-		
-		// 1. Check for a result on an existing plane using geometry.
+        
+        // Perform the hit test.
+        let results = hitTest(point, types: [.existingPlaneUsingGeometry, .estimatedVerticalPlane, .estimatedHorizontalPlane])
+        
+        // 1. Check for a result on an existing plane using geometry.
         if let existingPlaneUsingGeometryResult = results.first(where: { $0.type == .existingPlaneUsingGeometry }),
             let planeAnchor = existingPlaneUsingGeometryResult.anchor as? ARPlaneAnchor, allowedAlignments.contains(planeAnchor.alignment) {
             return existingPlaneUsingGeometryResult
-		}
-		
-		if infinitePlane {
-			
-			// 2. Check for a result on an existing plane, assuming its dimensions are infinite.
-			//    Loop through all hits against infinite existing planes and either return the
-			//    nearest one (vertical planes) or return the nearest one which is within 5 cm
-			//    of the object's position.
-			let infinitePlaneResults = hitTest(point, types: .existingPlane)
+        }
+        
+        if infinitePlane {
+            
+            // 2. Check for a result on an existing plane, assuming its dimensions are infinite.
+            //    Loop through all hits against infinite existing planes and either return the
+            //    nearest one (vertical planes) or return the nearest one which is within 5 cm
+            //    of the object's position.
+            let infinitePlaneResults = hitTest(point, types: .existingPlane)
             
             for infinitePlaneResult in infinitePlaneResults {
                 if let planeAnchor = infinitePlaneResult.anchor as? ARPlaneAnchor, allowedAlignments.contains(planeAnchor.alignment) {
@@ -63,62 +63,69 @@ class VirtualObjectARView: ARSCNView {
                     }
                 }
             }
-		}
-		
-		// 3. As a final fallback, check for a result on estimated planes.
-		let vResult = results.first(where: { $0.type == .estimatedVerticalPlane })
-		let hResult = results.first(where: { $0.type == .estimatedHorizontalPlane })
-        switch (allowedAlignments.contains(.horizontal), allowedAlignments.contains(.vertical)) {
-            case (true, false):
-                return hResult
-            case (false, true):
-                // Allow fallback to horizontal because we assume that objects meant for vertical placement
-                // (like a picture) can always be placed on a horizontal surface, too.
-                return vResult ?? hResult
-            case (true, true):
-                if hResult != nil && vResult != nil {
-                    return hResult!.distance < vResult!.distance ? hResult! : vResult!
-                } else {
-                    return hResult ?? vResult
-                }
-            default:
-                return nil
         }
-	}
-	
+        
+        // 3. As a final fallback, check for a result on estimated planes.
+        let vResult = results.first(where: { $0.type == .estimatedVerticalPlane })
+        let hResult = results.first(where: { $0.type == .estimatedHorizontalPlane })
+        switch (allowedAlignments.contains(.horizontal), allowedAlignments.contains(.vertical)) {
+        case (true, false):
+            return hResult
+        case (false, true):
+            // Allow fallback to horizontal because we assume that objects meant for vertical placement
+            // (like a picture) can always be placed on a horizontal surface, too.
+            return vResult ?? hResult
+        case (true, true):
+            if hResult != nil && vResult != nil {
+                return hResult!.distance < vResult!.distance ? hResult! : vResult!
+            } else {
+                return hResult ?? vResult
+            }
+        default:
+            return nil
+        }
+    }
+    
     let threshold: CGFloat = 5
     let incrementCoefficient: CGFloat = 5/20
     
     
-    override func hitTest(_ point: CGPoint, options: [SCNHitTestOption : Any]? = nil) -> [SCNHitTestResult] {
+     func hitTest(_ point: CGPoint, options: [SCNHitTestOption : Any]? = nil, node: SCNNode) -> [SCNHitTestResult] {
         var increment = incrementCoefficient
         var returns = [SCNHitTestResult]()
         var newPoint = CGPoint.init(x: point.x - threshold, y: point.y - threshold)
-        while ((newPoint.x < (point.x + threshold)) && (newPoint.y < (point.y + threshold)) ) {
-            newPoint = CGPoint.init(x: newPoint.x + incrementCoefficient, y: newPoint.y + incrementCoefficient)
-            increment += incrementCoefficient
-            returns.append(contentsOf: super.hitTest(newPoint, options: options))
+        for xIncrement in stride(from: increment, to: threshold, by: +incrementCoefficient) {
+            for yIncrement in stride(from: increment, to: threshold, by: +incrementCoefficient){
+                let hitTest = super.hitTest(newPoint, options: options)
+                for result in hitTest {
+                    if result.node == node {
+                        returns.append(result)
+                    }
+                }
+                newPoint.y += yIncrement
+            }
+            newPoint.x += xIncrement
         }
         
         return returns
-
+        
         
     }
     
     
-	// - MARK: Object anchors
-	/// - Tag: AddOrUpdateAnchor
-	func addOrUpdateAnchor(for object: VirtualObject) {
-		// If the anchor is not nil, remove it from the session.
-		if let anchor = object.anchor {
-			session.remove(anchor: anchor)
-		}
-		
-		// Create a new anchor with the object's current transform and add it to the session
-		let newAnchor = ARAnchor(transform: object.simdWorldTransform)
-		object.anchor = newAnchor
-		session.add(anchor: newAnchor)
-	}
+    // - MARK: Object anchors
+    /// - Tag: AddOrUpdateAnchor
+    func addOrUpdateAnchor(for object: VirtualObject) {
+        // If the anchor is not nil, remove it from the session.
+        if let anchor = object.anchor {
+            session.remove(anchor: anchor)
+        }
+        
+        // Create a new anchor with the object's current transform and add it to the session
+        let newAnchor = ARAnchor(transform: object.simdWorldTransform)
+        object.anchor = newAnchor
+        session.add(anchor: newAnchor)
+    }
 }
 
 extension SCNView {
