@@ -110,8 +110,9 @@ class MPCManager: NSObject,MCSessionDelegate,MCNearbyServiceAdvertiserDelegate,M
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         
-        let dictionary: [String:AnyObject] = ["data":data as AnyObject,"fromPeer":peerID] //in questo modo puoi risalire a chi ti ha mandato il dato. (a noi non dovrebbe servire)
-        delegate?.handleReceivedData(data: dictionary)
+        let dataReceived: [String:AnyObject] = ["data":data as AnyObject,
+                                                "fromPeer":peerID] //in questo modo puoi risalire a chi ti ha mandato il dato. (a noi non dovrebbe servire)
+        delegate?.handleReceivedData(data: dataReceived)
         
         /*
          handleReceivedData deve essere una funzione di questo tipo:

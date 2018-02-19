@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     var touchEndTime: TimeInterval?
     var currentObject: SCNNode?
     var velocityToApply: Float = 5.0
-    
+    var gameManager: GameManager?
     
    // MARK: - ARKit Configuration Properties
     
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     lazy var virtualObjectInteraction = VirtualObjectInteraction(sceneView: sceneView)
     
     /// Coordinates the loading and unloading of reference nodes for virtual objects.
-    let virtualObjectLoader = VirtualObjectLoader()
+    let virtualObjectLoader = FieldLoader()
     
     /// Marks if the AR experience is available for restart.
     var isRestartAvailable = true
@@ -69,10 +69,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        GameManager.shared
-        
         sceneView.delegate = self
         sceneView.session.delegate = self
 
@@ -80,6 +76,9 @@ class ViewController: UIViewController {
         setupCamera()
         sceneView.scene.rootNode.addChildNode(focusSquare)
 
+//        Set MPC Manager delegate
+        MPCManager.shared.delegate = self
+        
           // Hook up status view controller callback(s).
         statusViewController.restartExperienceHandler = { [unowned self] in
             self.restartExperience()

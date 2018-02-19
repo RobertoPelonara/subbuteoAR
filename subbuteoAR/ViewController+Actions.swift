@@ -28,13 +28,16 @@ extension ViewController: UIGestureRecognizerDelegate {
         
         let modelsURL = Bundle.main.url(forResource: "Models.scnassets/campo", withExtension: "scn")!
         
-       let virtualObject = VirtualObject.init(url: modelsURL)
+       let virtualObject = Field.init(url: modelsURL)
         
         virtualObjectLoader.loadVirtualObject(virtualObject!, loadedHandler: { [unowned self] loadedObject in
             DispatchQueue.main.async {
                 self.hideObjectLoadingUI()
                 self.placeVirtualObject(loadedObject)
-                loadedObject.childNode(withName: "campo", recursively: true)?.categoryBitMask = 2
+                print(loadedObject.name)
+                loadedObject.childNode(withName: "floor", recursively: true)?.categoryBitMask = 2
+                self.gameManager = GameManager.init(scene: self.sceneView.scene)
+                
             }
         })
         

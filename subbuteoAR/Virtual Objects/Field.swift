@@ -9,7 +9,7 @@ import Foundation
 import SceneKit
 import ARKit
 
-class VirtualObject: SCNReferenceNode {
+class Field: SCNReferenceNode {
     
     /// The model name derived from the `referenceURL`.
     var modelName: String {
@@ -199,11 +199,11 @@ class VirtualObject: SCNReferenceNode {
     }
 }
 
-extension VirtualObject {
+extension Field {
     // MARK: Static Properties and Methods
     
     /// Loads all the model objects within `Models.scnassets`.
-    static let availableObjects: [VirtualObject] = {
+    static let availableObjects: [Field] = {
         let modelsURL = Bundle.main.url(forResource: "Models.scnassets", withExtension: nil)!
 
         let fileEnumerator = FileManager().enumerator(at: modelsURL, includingPropertiesForKeys: [])!
@@ -213,13 +213,13 @@ extension VirtualObject {
 
             guard url.pathExtension == "scn" else { return nil }
 
-            return VirtualObject(url: url)
+            return Field(url: url)
         }
     }()
     
     /// Returns a `VirtualObject` if one exists as an ancestor to the provided node.
-    static func existingObjectContainingNode(_ node: SCNNode) -> VirtualObject? {
-        if let virtualObjectRoot = node as? VirtualObject {
+    static func existingObjectContainingNode(_ node: SCNNode) -> Field? {
+        if let virtualObjectRoot = node as? Field {
             return virtualObjectRoot
         }
         

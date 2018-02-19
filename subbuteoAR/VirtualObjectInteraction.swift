@@ -21,12 +21,12 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
      The object that has been most recently intereacted with.
      The `selectedObject` can be moved at any time with the tap gesture.
      */
-    var selectedObject: VirtualObject?
+    var selectedObject: Field?
     
     var canInteractWithObject = true
     
     /// The object that is tracked for use by the pan and rotation gestures.
-    private var trackedObject: VirtualObject? {
+    private var trackedObject: Field? {
         didSet {
             guard trackedObject != nil else { return }
             
@@ -159,7 +159,7 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
 
     /// A helper method to return the first object that is found under the provided `gesture`s touch locations.
     /// - Tag: TouchTesting
-    private func objectInteracting(with gesture: UIGestureRecognizer, in view: ARSCNView) -> VirtualObject? {
+    private func objectInteracting(with gesture: UIGestureRecognizer, in view: ARSCNView) -> Field? {
         for index in 0..<gesture.numberOfTouches {
             let touchLocation = gesture.location(ofTouch: index, in: view)
             
@@ -178,7 +178,7 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
     // MARK: - Update object position
 
     /// - Tag: DragVirtualObject
-	private func translate(_ object: VirtualObject, basedOn screenPos: CGPoint, infinitePlane: Bool, allowAnimation: Bool) {
+	private func translate(_ object: Field, basedOn screenPos: CGPoint, infinitePlane: Bool, allowAnimation: Bool) {
         guard let cameraTransform = sceneView.session.currentFrame?.camera.transform,
 			let result = sceneView.smartHitTest(screenPos,
 												infinitePlane: infinitePlane,

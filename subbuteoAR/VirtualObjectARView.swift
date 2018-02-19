@@ -13,12 +13,12 @@ class VirtualObjectARView: ARSCNView {
     // MARK: Position Testing
     
     /// Hit tests against the `sceneView` to find an object at the provided point.
-    func virtualObject(at point: CGPoint) -> VirtualObject? {
+    func virtualObject(at point: CGPoint) -> Field? {
         let hitTestOptions: [SCNHitTestOption: Any] = [.boundingBoxOnly: true]
         let hitTestResults = hitTest(point, options: hitTestOptions)
         
         return hitTestResults.lazy.flatMap { result in
-            return VirtualObject.existingObjectContainingNode(result.node)
+            return Field.existingObjectContainingNode(result.node)
             }.first
     }
     
@@ -121,7 +121,7 @@ class VirtualObjectARView: ARSCNView {
     
     // - MARK: Object anchors
     /// - Tag: AddOrUpdateAnchor
-    func addOrUpdateAnchor(for object: VirtualObject) {
+    func addOrUpdateAnchor(for object: Field) {
         // If the anchor is not nil, remove it from the session.
         if let anchor = object.anchor {
             session.remove(anchor: anchor)

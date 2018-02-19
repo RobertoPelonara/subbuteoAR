@@ -16,7 +16,7 @@ extension ViewController {
      
      - Tag: PlaceVirtualObject
      */
-    func placeVirtualObject(_ virtualObject: VirtualObject) {
+    func placeVirtualObject(_ virtualObject: Field) {
         guard let cameraTransform = session.currentFrame?.camera.transform,
 			let focusSquareAlignment = focusSquare.recentFocusSquareAlignments.last,
 			focusSquare.state != .initializing else {
