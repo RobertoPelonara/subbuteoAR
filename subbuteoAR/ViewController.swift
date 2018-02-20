@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     var touchEndTime: TimeInterval?
     var currentObject: SCNNode?
     var velocityToApply: Float = 5.0
-    var gameManager: GameManager?
+    
     
    // MARK: - ARKit Configuration Properties
     
@@ -140,6 +140,11 @@ class ViewController: UIViewController {
     // MARK: - Focus Square
 
     @IBAction func switchAction(_ sender: UISwitch) {
+        
+        guard let fieldNode = sceneView.scene.rootNode.childNode(withName: "campo", recursively: true) else {return}
+        
+        if !canMoveField {fieldNode.geometry?.materials.first?.transparency = 0.75
+            } else {fieldNode.geometry?.materials.first?.transparency = 1}
         
         canMoveField = !canMoveField
         virtualObjectInteraction.canInteractWithObject = canMoveField

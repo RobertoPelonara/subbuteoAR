@@ -26,8 +26,8 @@
 		C8C2AC521F3A545C00E86BA3 /* VirtualObjectInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C2AC511F3A545C00E86BA3 /* VirtualObjectInteraction.swift */; };
 		C8D71A001F3B7D3D0086AD64 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D719FF1F3B7D3D0086AD64 /* Field.swift */; };
 		E396027B2036D99000CD4A1C /* ViewController+PlayerMovements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396027A2036D99000CD4A1C /* ViewController+PlayerMovements.swift */; };
-		E3B4CE6B2036D1460037691D /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B4CE6A2036D1460037691D /* GameManager.swift */; };
 		E3C5912020372903002877C4 /* peerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C5911F20372903002877C4 /* peerViewController.swift */; };
+		E3FF7CE4203C279B00FD9FBA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF7CE3203C279B00FD9FBA /* GameManager.swift */; };
 		FE8782DF20371FA800970449 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8782DE20371FA800970449 /* MPCManager.swift */; };
 		FE8782E1203720B100970449 /* ViewController+MPCManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8782E0203720B100970449 /* ViewController+MPCManagerDelegate.swift */; };
 		FEE91524203C18930087BFF5 /* WaitingForMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE91523203C18930087BFF5 /* WaitingForMembersViewController.swift */; };
@@ -56,8 +56,8 @@
 		C8C2AC511F3A545C00E86BA3 /* VirtualObjectInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectInteraction.swift; sourceTree = "<group>"; };
 		C8D719FF1F3B7D3D0086AD64 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		E396027A2036D99000CD4A1C /* ViewController+PlayerMovements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+PlayerMovements.swift"; sourceTree = "<group>"; };
-		E3B4CE6A2036D1460037691D /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		E3C5911F20372903002877C4 /* peerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peerViewController.swift; sourceTree = "<group>"; };
+		E3FF7CE3203C279B00FD9FBA /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		FE8782DE20371FA800970449 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
 		FE8782E0203720B100970449 /* ViewController+MPCManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+MPCManagerDelegate.swift"; sourceTree = "<group>"; };
 		FEE91523203C18930087BFF5 /* WaitingForMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForMembersViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		3929C48A1E89EC2C00E00B60 /* subbuteoAR */ = {
 			isa = PBXGroup;
 			children = (
-				E3B4CE6A2036D1460037691D /* GameManager.swift */,
+				E3FF7CE3203C279B00FD9FBA /* GameManager.swift */,
 				3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */,
 				3929C48D1E89EC2C00E00B60 /* ViewController.swift */,
 				C8C12A701F29277B00B011FE /* ViewController+ARSCNViewDelegate.swift */,
@@ -240,7 +240,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C812D8681F47628300344E73 /* ThresholdPanGesture.swift in Sources */,
-				E3B4CE6B2036D1460037691D /* GameManager.swift in Sources */,
 				FE8782DF20371FA800970449 /* MPCManager.swift in Sources */,
 				11BD822A1F09D750003F11C8 /* ViewController+ObjectSelection.swift in Sources */,
 				FEE91524203C18930087BFF5 /* WaitingForMembersViewController.swift in Sources */,
@@ -256,6 +255,7 @@
 				148832411EFC3B250043E0AB /* FocusSquareSegment.swift in Sources */,
 				E396027B2036D99000CD4A1C /* ViewController+PlayerMovements.swift in Sources */,
 				FE8782E1203720B100970449 /* ViewController+MPCManagerDelegate.swift in Sources */,
+				E3FF7CE4203C279B00FD9FBA /* GameManager.swift in Sources */,
 				C8D71A001F3B7D3D0086AD64 /* Field.swift in Sources */,
 				C42A71BD1E9C0AF200944367 /* FocusSquare.swift in Sources */,
 				3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */,
