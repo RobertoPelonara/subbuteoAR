@@ -26,7 +26,6 @@
 		C8C2AC521F3A545C00E86BA3 /* VirtualObjectInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C2AC511F3A545C00E86BA3 /* VirtualObjectInteraction.swift */; };
 		C8D71A001F3B7D3D0086AD64 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D719FF1F3B7D3D0086AD64 /* Field.swift */; };
 		E396027B2036D99000CD4A1C /* ViewController+PlayerMovements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396027A2036D99000CD4A1C /* ViewController+PlayerMovements.swift */; };
-		E3B4CE6B2036D1460037691D /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B4CE6A2036D1460037691D /* GameManager.swift */; };
 		E3C5912020372903002877C4 /* peerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C5911F20372903002877C4 /* peerViewController.swift */; };
 		FE8782DF20371FA800970449 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8782DE20371FA800970449 /* MPCManager.swift */; };
 		FE8782E1203720B100970449 /* ViewController+MPCManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8782E0203720B100970449 /* ViewController+MPCManagerDelegate.swift */; };
@@ -54,7 +53,6 @@
 		C8C2AC511F3A545C00E86BA3 /* VirtualObjectInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectInteraction.swift; sourceTree = "<group>"; };
 		C8D719FF1F3B7D3D0086AD64 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		E396027A2036D99000CD4A1C /* ViewController+PlayerMovements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+PlayerMovements.swift"; sourceTree = "<group>"; };
-		E3B4CE6A2036D1460037691D /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		E3C5911F20372903002877C4 /* peerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peerViewController.swift; sourceTree = "<group>"; };
 		FE8782DE20371FA800970449 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
 		FE8782E0203720B100970449 /* ViewController+MPCManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+MPCManagerDelegate.swift"; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 		3929C48A1E89EC2C00E00B60 /* subbuteoAR */ = {
 			isa = PBXGroup;
 			children = (
-				E3B4CE6A2036D1460037691D /* GameManager.swift */,
 				3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */,
 				3929C48D1E89EC2C00E00B60 /* ViewController.swift */,
 				C8C12A701F29277B00B011FE /* ViewController+ARSCNViewDelegate.swift */,
@@ -234,7 +231,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C812D8681F47628300344E73 /* ThresholdPanGesture.swift in Sources */,
-				E3B4CE6B2036D1460037691D /* GameManager.swift in Sources */,
 				FE8782DF20371FA800970449 /* MPCManager.swift in Sources */,
 				11BD822A1F09D750003F11C8 /* ViewController+ObjectSelection.swift in Sources */,
 				1488323F1EFC378A0043E0AB /* ViewController+Actions.swift in Sources */,
