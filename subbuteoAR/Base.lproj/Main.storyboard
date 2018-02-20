@@ -110,28 +110,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJg-Jw-HXU">
-                                <rect key="frame" x="167" y="229" width="41" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="a93-rY-lvI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="HOST"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJg-Jw-HXU">
+                                <rect key="frame" x="100" y="455" width="176" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="host"/>
                                 <connections>
                                     <action selector="hostAction:" destination="CVg-Ds-mGY" eventType="touchUpInside" id="LdT-gG-XRf"/>
                                     <segue destination="4mF-a7-eiD" kind="show" id="6Bj-sD-BlV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDF-15-U4l">
-                                <rect key="frame" x="168" y="382" width="34" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDF-15-U4l">
+                                <rect key="frame" x="100" y="546" width="176" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="JOIN"/>
+                                <state key="normal" image="join"/>
                                 <connections>
                                     <action selector="joinAction:" destination="CVg-Ds-mGY" eventType="touchUpInside" id="EnV-ag-lnM"/>
                                     <segue destination="Yr1-RP-45c" kind="show" id="QKk-Pn-A48"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLI-4s-Sgn">
-                                <rect key="frame" x="172" y="524" width="30" height="30"/>
+                                <rect key="frame" x="153" y="360" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="AR"/>
+                                <state key="normal" title="AR (TEST)"/>
                                 <connections>
                                     <action selector="ARAction:" destination="CVg-Ds-mGY" eventType="touchUpInside" id="gbe-ee-Qfb"/>
                                 </connections>
@@ -193,11 +197,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGq-Dx-xUV">
-                                <rect key="frame" x="97" y="555" width="180" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGq-Dx-xUV">
+                                <rect key="frame" x="100" y="542" width="176" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.013151916228267365" green="0.78039215689999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="START">
+                                <state key="normal" image="start">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -340,11 +343,15 @@
     </scenes>
     <resources>
         <image name="add" width="48" height="48"/>
+        <image name="background" width="375" height="667"/>
+        <image name="host" width="264" height="84"/>
+        <image name="join" width="176" height="56"/>
         <image name="restart" width="20" height="23"/>
         <image name="restartPressed" width="20" height="23"/>
+        <image name="start" width="176" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="X1t-zi-ShD"/>
-        <segue reference="M9N-Oq-flk"/>
+        <segue reference="6Bj-sD-BlV"/>
     </inferredMetricsTieBreakers>
 </document>
