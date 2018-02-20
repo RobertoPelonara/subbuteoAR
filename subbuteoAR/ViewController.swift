@@ -38,14 +38,7 @@ class ViewController: UIViewController {
     var touchEndTime: TimeInterval?
     var currentObject: SCNNode?
     var velocityToApply: Float = 5.0
-    var gameManager: GameManager {
-        get {
-            return (UIApplication.shared.delegate as! AppDelegate).gameManager!
-        }
-        set {
-            (UIApplication.shared.delegate as! AppDelegate).gameManager = newValue
-        }
-    }
+    
     
    // MARK: - ARKit Configuration Properties
     
