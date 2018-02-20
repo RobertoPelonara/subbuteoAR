@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     var touchStartTime: TimeInterval?
     var touchEndTime: TimeInterval?
     var currentObject: SCNNode?
-    var velocityToApply: Float = 5.0
+    var velocityToApply: Float = 2.0
     
     
    // MARK: - ARKit Configuration Properties
@@ -75,7 +75,8 @@ class ViewController: UIViewController {
         // Set up scene content.
         setupCamera()
         sceneView.scene.rootNode.addChildNode(focusSquare)
-
+        sceneView.scene.physicsWorld.contactDelegate = self
+        
 //        Set MPC Manager delegate
         MPCManager.shared.delegate = self
         

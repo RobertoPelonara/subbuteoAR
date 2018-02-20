@@ -25,6 +25,7 @@
 		C8C12A711F29277B00B011FE /* ViewController+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C12A701F29277B00B011FE /* ViewController+ARSCNViewDelegate.swift */; };
 		C8C2AC521F3A545C00E86BA3 /* VirtualObjectInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C2AC511F3A545C00E86BA3 /* VirtualObjectInteraction.swift */; };
 		C8D71A001F3B7D3D0086AD64 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D719FF1F3B7D3D0086AD64 /* Field.swift */; };
+		E31E0E92203CA1FB000154F2 /* ViewController+ContactDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E0E91203CA1FB000154F2 /* ViewController+ContactDelegate.swift */; };
 		E396027B2036D99000CD4A1C /* ViewController+PlayerMovements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396027A2036D99000CD4A1C /* ViewController+PlayerMovements.swift */; };
 		E3C5912020372903002877C4 /* peerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C5911F20372903002877C4 /* peerViewController.swift */; };
 		E3FF7CE4203C279B00FD9FBA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF7CE3203C279B00FD9FBA /* GameManager.swift */; };
@@ -55,6 +56,7 @@
 		C8C12A701F29277B00B011FE /* ViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
 		C8C2AC511F3A545C00E86BA3 /* VirtualObjectInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectInteraction.swift; sourceTree = "<group>"; };
 		C8D719FF1F3B7D3D0086AD64 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		E31E0E91203CA1FB000154F2 /* ViewController+ContactDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ContactDelegate.swift"; sourceTree = "<group>"; };
 		E396027A2036D99000CD4A1C /* ViewController+PlayerMovements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+PlayerMovements.swift"; sourceTree = "<group>"; };
 		E3C5911F20372903002877C4 /* peerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peerViewController.swift; sourceTree = "<group>"; };
 		E3FF7CE3203C279B00FD9FBA /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */,
 				3929C48D1E89EC2C00E00B60 /* ViewController.swift */,
 				C8C12A701F29277B00B011FE /* ViewController+ARSCNViewDelegate.swift */,
+				E31E0E91203CA1FB000154F2 /* ViewController+ContactDelegate.swift */,
 				FE8782DE20371FA800970449 /* MPCManager.swift */,
 				E396027A2036D99000CD4A1C /* ViewController+PlayerMovements.swift */,
 				1488323E1EFC378A0043E0AB /* ViewController+Actions.swift */,
@@ -196,7 +199,7 @@
 				TargetAttributes = {
 					3929C4871E89EC2C00E00B60 = {
 						CreatedOnToolsVersion = 9.0;
-						DevelopmentTeam = 8A9629QXPF;
+						DevelopmentTeam = 8V8B595TM4;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -241,6 +244,7 @@
 			files = (
 				C812D8681F47628300344E73 /* ThresholdPanGesture.swift in Sources */,
 				FE8782DF20371FA800970449 /* MPCManager.swift in Sources */,
+				E31E0E92203CA1FB000154F2 /* ViewController+ContactDelegate.swift in Sources */,
 				11BD822A1F09D750003F11C8 /* ViewController+ObjectSelection.swift in Sources */,
 				FEE91524203C18930087BFF5 /* WaitingForMembersViewController.swift in Sources */,
 				1488323F1EFC378A0043E0AB /* ViewController+Actions.swift in Sources */,
@@ -393,8 +397,9 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8A9629QXPF;
+				DEVELOPMENT_TEAM = 8V8B595TM4;
 				INFOPLIST_FILE = "$(SRCROOT)/subbuteoAR/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.narax.subbuteo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -412,8 +417,9 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8A9629QXPF;
+				DEVELOPMENT_TEAM = 8V8B595TM4;
 				INFOPLIST_FILE = "$(SRCROOT)/subbuteoAR/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.narax.subbuteo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

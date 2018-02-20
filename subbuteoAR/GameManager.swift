@@ -49,7 +49,7 @@ class GameManager {
     private var currentTimeInterval: TimeInterval
     var gameScene: SCNScene?
     
-    var fieldSize: CGSize?
+    static var fieldSize: CGSize = CGSize(width: 1.31 , height: 2.10)
     
     
     
@@ -57,14 +57,6 @@ class GameManager {
     
     init (scene: SCNScene) {
         gameScene = scene
-        
-        if let boundingBox = scene.rootNode.childNode(withName: "campo", recursively: true)?.boundingBox {
-            
-            let fieldH = CGFloat((boundingBox.max.y - boundingBox.min.y) * 0.01)
-            let fieldW = CGFloat((boundingBox.min.x - boundingBox.min.x) * 0.86)
-            fieldSize = CGSize(width: fieldW, height: fieldH)
-            print("Bounding BOX FOUND")
-        }
         
         let teamAway = Team( "away", scene)
         let teamHome = Team( "home", scene)
@@ -143,17 +135,13 @@ class Team {
     init (_ id: String,_ scene: SCNScene){
         self.id = id
         let field = scene.rootNode.childNode(withName: "campo", recursively: true)
-        guard let box = field?.boundingBox else {print("try again: \(id)"); return}
-        let fieldWidth = box.max.x - box.min.x
-        let fieldHeight = box.max.y - box.min.y
         
         for i in 0...10 {
             let playerScene = SCNScene(named: "Models.scnassets/Players + goal/\(id).scn")
             let playerNode = playerScene?.rootNode.childNode(withName: "player", recursively: true)
             let moltiplier: Float = (id == "home") ? 1 : -1
             
-            let halfFieldSize = CGSize(width: CGFloat((fieldWidth / 2) * 0.9),
-                                       height: CGFloat(((fieldHeight / 2) * 0.75) / 1.75))
+            let halfFieldSize = (width: GameManager.fieldSize.width, height: GameManager.fieldSize.height / 4)
             
             playerNode?.name = "\(id)_\(i)"
             
@@ -204,11 +192,11 @@ class Player {
         if gameManager == nil {
         gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
         }
-        if abs(transform.translation.x) > Float((gameManager?.fieldSize?.width)!) ||
-            abs(transform.translation.y) > Float((gameManager?.fieldSize?.height)!){
+        if abs(transform.translation.x) > Float(GameManager.fieldSize.width) ||
+            abs(transform.translation.y) > Float(GameManager.fieldSize.height){
             
-            let wPosition = abs(transform.translation.x) > Float((gameManager?.fieldSize?.width)!) ? Float((gameManager?.fieldSize?.width)!) : transform.translation.x
-            let hPosition = abs(transform.translation.y) > Float((gameManager?.fieldSize?.height)!) ? Float((gameManager?.fieldSize?.height)!) : transform.translation.y
+            let wPosition = abs(transform.translation.x) > Float(GameManager.fieldSize.width) ? Float(GameManager.fieldSize.width) : transform.translation.x
+            let hPosition = abs(transform.translation.y) > Float(GameManager.fieldSize.height) ? Float(GameManager.fieldSize.height): transform.translation.y
             
             let vector = SCNVector3(wPosition, hPosition, 0.001)
             transform.translation = float3(vector)
@@ -232,11 +220,12 @@ class Player {
         func tick () {
             //        Check if position of the ball is off of the ground
             //        TODO: Clean this mess
-            if abs(transform.translation.x) > Float((gameManager?.fieldSize?.width)!) ||
-                abs(transform.translation.y) > Float((gameManager?.fieldSize?.height)!){
+            if abs(transform.translation.x) > Float(GameManager.fieldSize.width) ||
+                abs(transform.translation.y) > Float(GameManager.fieldSize.height){
                 
-                let wPosition = abs(transform.translation.x) > Float((gameManager?.fieldSize?.width)!) ? Float((gameManager?.fieldSize?.width)!) : transform.translation.x
-                let hPosition = abs(transform.translation.y) > Float((gameManager?.fieldSize?.height)!) ? Float((gameManager?.fieldSize?.height)!) : transform.translation.y
+                let wPosition = abs(transform.translation.x) > Float(GameManager.fieldSize.width) ? Float(GameManager.fieldSize.width) : transform.translation.x
+                let hPosition = abs(transform.translation.y) > Float(GameManager.fieldSize.height) ? Float(GameManager.fieldSize.height): transform.translation.y
+                
                 
                 let vector = SCNVector3(wPosition, hPosition, 0.001)
                 gameManager?.foul(committedBy: (gameManager?.currentTurn)!, atPosition: vector)
