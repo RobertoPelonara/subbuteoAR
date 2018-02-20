@@ -88,6 +88,8 @@ class ViewController: UIViewController {
         // Set the delegate to ensure this gesture is only used when there are no virtual objects in the scene.
         tapGesture.delegate = self
         sceneView.addGestureRecognizer(tapGesture)
+        
+        self.navigationController?.isNavigationBarHidden = true
     }
 
 	override func viewDidAppear(_ animated: Bool) {

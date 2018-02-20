@@ -30,6 +30,8 @@
 		E3C5912020372903002877C4 /* peerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C5911F20372903002877C4 /* peerViewController.swift */; };
 		FE8782DF20371FA800970449 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8782DE20371FA800970449 /* MPCManager.swift */; };
 		FE8782E1203720B100970449 /* ViewController+MPCManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8782E0203720B100970449 /* ViewController+MPCManagerDelegate.swift */; };
+		FEE91524203C18930087BFF5 /* WaitingForMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE91523203C18930087BFF5 /* WaitingForMembersViewController.swift */; };
+		FEE91526203C24180087BFF5 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE91525203C24180087BFF5 /* JoinViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		E3C5911F20372903002877C4 /* peerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peerViewController.swift; sourceTree = "<group>"; };
 		FE8782DE20371FA800970449 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
 		FE8782E0203720B100970449 /* ViewController+MPCManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+MPCManagerDelegate.swift"; sourceTree = "<group>"; };
+		FEE91523203C18930087BFF5 /* WaitingForMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForMembersViewController.swift; sourceTree = "<group>"; };
+		FEE91525203C24180087BFF5 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,8 @@
 				C812D8671F47628300344E73 /* ThresholdPanGesture.swift */,
 				C46356661EF9CC480080C8D9 /* VirtualObjectARView.swift */,
 				FE8782E0203720B100970449 /* ViewController+MPCManagerDelegate.swift */,
+				FEE91523203C18930087BFF5 /* WaitingForMembersViewController.swift */,
+				FEE91525203C24180087BFF5 /* JoinViewController.swift */,
 				C40DF57B1EC2330700D9D59E /* Virtual Objects */,
 				113B64D01ECA81CA0071CBD1 /* Focus Square */,
 				1488324B1EFC3EBF0043E0AB /* Additional View Controllers */,
@@ -190,7 +196,7 @@
 				TargetAttributes = {
 					3929C4871E89EC2C00E00B60 = {
 						CreatedOnToolsVersion = 9.0;
-						DevelopmentTeam = 54MA3YJVS2;
+						DevelopmentTeam = F27C7JQD27;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -237,6 +243,7 @@
 				E3B4CE6B2036D1460037691D /* GameManager.swift in Sources */,
 				FE8782DF20371FA800970449 /* MPCManager.swift in Sources */,
 				11BD822A1F09D750003F11C8 /* ViewController+ObjectSelection.swift in Sources */,
+				FEE91524203C18930087BFF5 /* WaitingForMembersViewController.swift in Sources */,
 				1488323F1EFC378A0043E0AB /* ViewController+Actions.swift in Sources */,
 				3929C48E1E89EC2C00E00B60 /* ViewController.swift in Sources */,
 				E3C5912020372903002877C4 /* peerViewController.swift in Sources */,
@@ -245,6 +252,7 @@
 				C8C12A711F29277B00B011FE /* ViewController+ARSCNViewDelegate.swift in Sources */,
 				C8C2AC521F3A545C00E86BA3 /* VirtualObjectInteraction.swift in Sources */,
 				C46356671EF9CC500080C8D9 /* VirtualObjectARView.swift in Sources */,
+				FEE91526203C24180087BFF5 /* JoinViewController.swift in Sources */,
 				148832411EFC3B250043E0AB /* FocusSquareSegment.swift in Sources */,
 				E396027B2036D99000CD4A1C /* ViewController+PlayerMovements.swift in Sources */,
 				FE8782E1203720B100970449 /* ViewController+MPCManagerDelegate.swift in Sources */,
@@ -385,7 +393,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54MA3YJVS2;
+				DEVELOPMENT_TEAM = F27C7JQD27;
 				INFOPLIST_FILE = "$(SRCROOT)/subbuteoAR/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.narax.subbuteo;
@@ -404,7 +412,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54MA3YJVS2;
+				DEVELOPMENT_TEAM = F27C7JQD27;
 				INFOPLIST_FILE = "$(SRCROOT)/subbuteoAR/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.narax.subbuteo;

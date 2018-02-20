@@ -14,14 +14,14 @@ protocol MPCManagerDelegate {
     func handleReceivedData(data: [String:AnyObject]) //chiamata quando ricevi un dato
 }
 
-class MPCManager: NSObject,MCSessionDelegate,MCNearbyServiceAdvertiserDelegate,MCBrowserViewControllerDelegate {
+class MPCManager: NSObject,MCSessionDelegate,MCNearbyServiceAdvertiserDelegate,MCNearbyServiceBrowserDelegate {
     
     static let shared = MPCManager()
     var isHost = false
     var session: MCSession!
     var peer: MCPeerID!
     var advertiser: MCNearbyServiceAdvertiser!
-    var browser : MCBrowserViewController?
+    var browser : MCNearbyServiceBrowser!
     var viewController: UIViewController?
     var foundPeers = [MCPeerID]()
     var invitationHandler: ((Bool,MCSession?)-> Void)!
@@ -35,8 +35,8 @@ class MPCManager: NSObject,MCSessionDelegate,MCNearbyServiceAdvertiserDelegate,M
         session = MCSession(peer: peer)
         session.delegate = self
         
-        let serviceBrowser = MCNearbyServiceBrowser(peer: peer, serviceType: "subbuteo-mpc")
-        browser = MCBrowserViewController(browser: serviceBrowser, session: session)
+        //browser = MCBrowserViewController(browser: serviceBrowser, session: session)
+        browser = MCNearbyServiceBrowser(peer: peer, serviceType: "subbuteo-mpc")
         browser?.delegate = self
         
         advertiser = MCNearbyServiceAdvertiser(peer: peer, discoveryInfo: nil, serviceType: "subbuteo-mpc")
@@ -141,6 +141,35 @@ class MPCManager: NSObject,MCSessionDelegate,MCNearbyServiceAdvertiserDelegate,M
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {}
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) { }
+    
+    
+    //conform to MCBrowserViewControllerDelegate
+    func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
+        for (index, aPeer) in foundPeers.enumerated(){
+            if aPeer == peerID {
+                foundPeers.remove(at: index)
+                break
+            }
+        }
+        
+        delegate?.lostPeer()
+    }
+    
+    func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
+        
+        for (index, aPeer) in foundPeers.enumerated(){
+            if aPeer == peerID {
+                
+                return
+                
+            }
+        }
+        
+        foundPeers.append(peerID)
+        delegate?.foundPeer()
+        
+    }
+    
     
     //conform to MCBrowserViewControllerDelegate
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {

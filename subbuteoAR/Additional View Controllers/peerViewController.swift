@@ -20,31 +20,14 @@ class peerViewController: UIViewController, MPCManagerDelegate {
     }
     
     func invitationWasReceived(fromPeer: String) {
-        let alert = UIAlertController(title: "", message: "\(fromPeer) wants to play with you.", preferredStyle: UIAlertControllerStyle.alert)
-        alert.view.tintColor = UIColor.init(red: 153/255, green: 39/255, blue: 199/255, alpha: 1)
         
-        let acceptAction: UIAlertAction = UIAlertAction(title: "Accept", style: UIAlertActionStyle.default) { (alertAction) -> Void in
-            MPCManager.shared.invitationHandler(true, MPCManager.shared.session)
-        }
-        
-        let declineAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (alertAction) -> Void in
-            MPCManager.shared.invitationHandler(false,nil)
-        }
-        
-        alert.addAction(acceptAction)
-        alert.addAction(declineAction)
-        
-        OperationQueue.main.addOperation { () -> Void in
-            self.present(alert, animated: true, completion: nil)
-        }
-
     }
     
     func connectedWithPeer(peerID: MCPeerID) {
-        DispatchQueue.main.async {
-            let segue = UIStoryboardSegue(identifier: "goToGame", source: MPCManager.shared.browser!, destination: UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gameView"))
-            self.performSegue(withIdentifier: "goToGame", sender: self)
-        }
+//        DispatchQueue.main.async {
+//            let segue = UIStoryboardSegue(identifier: "goToGame", source: MPCManager.shared.browser!, destination: UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gameView"))
+//            self.performSegue(withIdentifier: "goToGame", sender: self)
+//        }
     }
     
     func handleReceivedData(data: [String : AnyObject]) {
@@ -55,25 +38,22 @@ class peerViewController: UIViewController, MPCManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         MPCManager.shared.delegate = self
-        self.navigationController?.isNavigationBarHidden = true
+        
     }
     
-    @IBAction func hostAction(_ sender: Any) {
-        MPCManager.shared.advertiser!.startAdvertisingPeer()
+    @IBAction func joinAction(_ sender: UIButton) {
+        MPCManager.shared.isHost = false
+    }
+    
+    @IBAction func hostAction(_ sender: UIButton) {
         MPCManager.shared.isHost = true
     }
     
-    @IBAction func joinAction(_ sender: Any) {
-        self.navigationController?.pushViewController((MPCManager.shared.browser!), animated: true)
-        MPCManager.shared.browser?.browser?.startBrowsingForPeers()
-        
-        
-        
-    }
+
     
     @IBAction func ARAction(_ sender: UIButton) {
-        let segue = UIStoryboardSegue(identifier: "goToGame", source: MPCManager.shared.browser!, destination: UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gameView"))
-        performSegue(withIdentifier: "goToGame", sender: self)
+//        let segue = UIStoryboardSegue(identifier: "goToGame", source: MPCManager.shared.browser!, destination: UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gameView"))
+//        performSegue(withIdentifier: "goToGame", sender: self)
     }
     
 }
