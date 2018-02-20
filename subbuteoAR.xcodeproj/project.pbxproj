@@ -190,7 +190,7 @@
 				TargetAttributes = {
 					3929C4871E89EC2C00E00B60 = {
 						CreatedOnToolsVersion = 9.0;
-						DevelopmentTeam = 54MA3YJVS2;
+						DevelopmentTeam = 8V8B595TM4;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -385,7 +385,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54MA3YJVS2;
+				DEVELOPMENT_TEAM = 8V8B595TM4;
 				INFOPLIST_FILE = "$(SRCROOT)/subbuteoAR/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.narax.subbuteo;
@@ -404,7 +404,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54MA3YJVS2;
+				DEVELOPMENT_TEAM = 8V8B595TM4;
 				INFOPLIST_FILE = "$(SRCROOT)/subbuteoAR/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.narax.subbuteo;

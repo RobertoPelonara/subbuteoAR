@@ -33,11 +33,8 @@ enum Turn {
     case away
 }
 
-enum BitMask: Int {
-    case player = 0001
-    case field = 0010
-}
 
+//TODO: creare classe per il campo per lo storing delle proprietà del campo
 
 class GameManager {
     
@@ -59,6 +56,7 @@ class GameManager {
     
     
     
+    
     init (scene: SCNScene) {
         gameScene = scene
         let teamHome = Team( "home", scene)
@@ -73,13 +71,11 @@ class GameManager {
         currentTimeInterval = Date().timeIntervalSince1970
     }
     
-/**
+    /**
      Need to call this every frame
     */
     func tick () {
-        
         currentTimeInterval = Date().timeIntervalSince1970
-        
         deltaTime = currentTimeInterval - previousTimeInterval
         
         
@@ -155,21 +151,41 @@ class Team {
             scene.rootNode.childNode(withName: "campo", recursively: true)?.addChildNode(playerNode!)
             
             
-            print(scene.rootNode.childNode(withName: "campo", recursively: true)?.childNodes)
+            print(scene.rootNode.childNode(withName: "campo",
+                                           recursively: true)?.childNodes)
 
             guard let playerN = playerNode else {continue}
 
-            let playerToAdd = Player (node: playerN)
+            let playerToAdd = Player (node: playerN, team: self)
             players.append(playerToAdd)
             
         }
+    }
+    
+    func tick() {
+        
     }
     
 }
 
 class Player {
     var node: SCNNode
-    init(node: SCNNode) {
+    var transform: simd_float4x4
+    var team: Team
+    
+    private var position: SCNVector3 {
+        get {
+            return SCNVector3(transform.translation)
+        }
+    }
+    init(node: SCNNode, team: Team) {
+        
         self.node = node
+        transform = node.simdTransform
+        self.team = team
+    }
+    
+    func tick () {
+        
     }
 }
