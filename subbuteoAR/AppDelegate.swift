@@ -11,7 +11,8 @@ import ARKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
-
+    var gameManager: GameManager?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         guard ARWorldTrackingConfiguration.isSupported else {
             fatalError("""

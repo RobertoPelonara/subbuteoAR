@@ -15,9 +15,7 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
         DispatchQueue.main.async {
             self.virtualObjectInteraction.updateObjectToCurrentTrackingPosition()
             self.updateFocusSquare()
-            if self.gameManager != nil {
-                self.gameManager!.tick()
-            }
+            self.gameManager.tick()
         }
 		
 	    }
