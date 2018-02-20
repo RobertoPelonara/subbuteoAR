@@ -35,7 +35,7 @@ extension ViewController: UIGestureRecognizerDelegate {
                 self.hideObjectLoadingUI()
                 self.placeVirtualObject(loadedObject)
                 loadedObject.childNode(withName: "floor", recursively: true)?.categoryBitMask = 2
-                self.gameManager = GameManager.init(scene: self.sceneView.scene)
+                (UIApplication.shared.delegate as! AppDelegate).gameManager = GameManager.init(scene: self.sceneView.scene)
                 
                 //place goals
                 let field = loadedObject.childNode(withName: "campo", recursively: true)

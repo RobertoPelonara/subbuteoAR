@@ -63,7 +63,7 @@ class GameManager {
             let fieldH = CGFloat((boundingBox.max.y - boundingBox.min.y) * 0.01)
             let fieldW = CGFloat((boundingBox.min.x - boundingBox.min.x) * 0.86)
             fieldSize = CGSize(width: fieldW, height: fieldH)
-            
+            print("Bounding BOX FOUND")
         }
         
         let teamAway = Team( "away", scene)
@@ -185,7 +185,7 @@ class Player {
     var transform: simd_float4x4
     var team: Team
     
-    private var gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
+    private var gameManager: GameManager?
     
     private var position: SCNVector3 {
         get {
@@ -197,9 +197,13 @@ class Player {
         self.node = node
         transform = node.simdTransform
         self.team = team
+        gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
     }
     
     func tick () {
+        if gameManager == nil {
+        gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
+        }
         if abs(transform.translation.x) > Float((gameManager?.fieldSize?.width)!) ||
             abs(transform.translation.y) > Float((gameManager?.fieldSize?.height)!){
             
