@@ -34,9 +34,35 @@ extension ViewController: UIGestureRecognizerDelegate {
             DispatchQueue.main.async {
                 self.hideObjectLoadingUI()
                 self.placeVirtualObject(loadedObject)
-                print(loadedObject.name)
                 loadedObject.childNode(withName: "floor", recursively: true)?.categoryBitMask = 2
                 self.gameManager = GameManager.init(scene: self.sceneView.scene)
+                
+                //place goals
+                let field = loadedObject.childNode(withName: "campo", recursively: true)
+                guard let box = field?.boundingBox else {print("try again: goals"); return}
+                let fieldHeight = box.max.y - box.min.y
+                let fieldWidth = box.max.x - box.min.x
+                let halfFieldSize = CGSize(width: CGFloat((fieldWidth / 2) * 0.9),
+                                           height: CGFloat(((fieldHeight / 2) * 0.75) / 1.75))
+                
+                let goalPositionX: Float = 0.8
+                let positionToApplyHome = float3.init(x: goalPositionX * Float(halfFieldSize.width),
+                                                  y: 0,
+                                                  z: 0)
+                let positionToApplyAway = float3.init(x: positionToApplyHome.x * -1,
+                                                      y: 0,
+                                                      z: 0)
+                
+                let goalHomeScene = SCNScene(named: "Models.scnassets/Players + goal/goal.scn")
+                let goalAwayScene = SCNScene(named: "Models.scnassets/Players + goal/goal.scn")
+                let goalHomeNode = goalHomeScene?.rootNode.childNode(withName: "goal", recursively: true)
+                let goalAwayNode = goalAwayScene?.rootNode.childNode(withName: "goal", recursively: true)
+                goalAwayNode?.eulerAngles.z = .pi / 2
+                goalHomeNode?.simdPosition = positionToApplyHome
+                goalAwayNode?.simdPosition = positionToApplyAway
+                
+                self.sceneView.scene.rootNode.childNode(withName: "campo", recursively: true)?.addChildNode(goalHomeNode!)
+                self.sceneView.scene.rootNode.childNode(withName: "campo", recursively: true)?.addChildNode(goalAwayNode!)
                 
             }
         })
