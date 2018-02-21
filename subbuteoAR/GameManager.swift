@@ -101,12 +101,15 @@ class GameManager {
     func foul (committedBy: Turn, atPosition: SCNVector3){
         switch committedBy {
         case .home:
+            print("Home Foul")
             gameScene?.physicsWorld.speed = 0
            ball?.node.simdPosition = float3(atPosition)
            
             break
         case .away:
-            //          Il giocatore Away batte il calcio di punizione alla posizione "atPosition"
+            print("Away Foul")
+            gameScene?.physicsWorld.speed = 0
+            ball?.node.simdPosition = float3(atPosition)
             break
         }
     }
@@ -198,6 +201,7 @@ class Player {
         if let collision = collisionTest?.nodeB {
             if gameManager?.currentTurn != team.turn {
                 if collision == gameManager?.ball?.node {
+                    node.simdPosition = node.simdPosition - (collision.simdPosition - node.simdPosition)
                     gameManager?.foul(committedBy: team.turn,
                                       atPosition: collision.position)
                 }
@@ -215,6 +219,7 @@ class Player {
        
         init(node: SCNNode) {
             self.node = node
+            node.physicsBody?.type = .dynamic
             transform = node.simdTransform
         }
         
