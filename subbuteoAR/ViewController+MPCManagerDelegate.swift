@@ -37,8 +37,11 @@ extension ViewController: MPCManagerDelegate {
                     
                 case GameManager.shot:
                     let player = self.sceneView.scene.rootNode.childNode(withName: gameData.nodeName!, recursively: true)
+                    var position = player?.position
+                    print("prima del tiro la posizione è \(position)")
                     player?.physicsBody?.applyForce(gameData.force!, asImpulse: true)
-                    print("I received the force \(gameData.force!)")
+                    position = player?.position
+                    print("I received the force \(gameData.force!) and after the force the position is ")
                     break
                 case GameManager.goal:
                     break
