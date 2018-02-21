@@ -79,6 +79,7 @@ extension ViewController {
         currentPlayer.physicsBody?.applyForce(impulseVector, asImpulse: true)
         
         let _ = MPCManager.shared.sendData(gameDataToSend: shotToSend, toPeers: MPCManager.shared.session.connectedPeers)
+        print("I sent the force: \(shotToSend.force)")
         currentObject = nil
         
     }
