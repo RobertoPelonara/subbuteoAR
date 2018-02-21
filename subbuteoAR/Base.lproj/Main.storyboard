@@ -162,7 +162,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ikQ-PE-fJd">
-                                <rect key="frame" x="0.0" y="64" width="375" height="524"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="202"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -176,6 +176,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundJoinHome" translatesAutoresizingMaskIntoConstraints="NO" id="oaB-9a-1aO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="BQ1-f9-YbR"/>
@@ -187,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRc-et-cDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-622" y="887"/>
+            <point key="canvasLocation" x="-623.20000000000005" y="886.50674662668678"/>
         </scene>
         <!--WaitingForMemberViewController-->
         <scene sceneID="BV3-cE-T1d">
@@ -208,7 +212,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gZq-kX-dQp">
-                                <rect key="frame" x="0.0" y="64" width="375" height="465"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="211"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -222,6 +226,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundJoinHome" translatesAutoresizingMaskIntoConstraints="NO" id="FnW-Nh-WXm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="il8-3B-XKg"/>
@@ -234,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3H-Qe-ERJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="887"/>
+            <point key="canvasLocation" x="128.80000000000001" y="886.50674662668678"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -347,6 +355,7 @@
         <image name="Ready" width="221" height="69"/>
         <image name="add" width="48" height="48"/>
         <image name="background" width="375" height="667"/>
+        <image name="backgroundJoinHome" width="375" height="667"/>
         <image name="host" width="221" height="69"/>
         <image name="join" width="221" height="70"/>
         <image name="restart" width="20" height="23"/>
@@ -354,7 +363,7 @@
         <image name="start" width="221" height="69"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TOE-nY-FRA"/>
-        <segue reference="6Bj-sD-BlV"/>
+        <segue reference="X1t-zi-ShD"/>
+        <segue reference="M9N-Oq-flk"/>
     </inferredMetricsTieBreakers>
 </document>
