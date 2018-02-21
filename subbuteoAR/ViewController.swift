@@ -152,6 +152,7 @@ class ViewController: UIViewController {
         
         (UIApplication.shared.delegate as! AppDelegate).gameManager = GameManager.init(scene: self.sceneView.scene)
         
+        fieldNode.childNode(withName: "Plane", recursively: true)?.geometry?.materials.first?.transparency = 1
         placeFieldOutlet.isHidden = true
         
         
