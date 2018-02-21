@@ -24,8 +24,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var placeFieldOutlet: UIButton!
     
     var canMoveField = true
-    // MARK: - UI Elements
+    var settingFieldPosition = false
     
+    // MARK: - UI Elements
     var focusSquare = FocusSquare()
     
     /// The view controller that displays the status and "restart experience" UI.
@@ -187,7 +188,7 @@ class ViewController: UIViewController {
 			return
 		}
 		
-        addObjectButton.isHidden = false
+        if settingFieldPosition == false {addObjectButton.isHidden = false}
         statusViewController.cancelScheduledMessage(for: .focusSquare)
 	}
     
