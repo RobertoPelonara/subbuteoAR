@@ -150,7 +150,7 @@ class Team {
                                               z: homePlayersPosition[i].z)
             
             playerNode?.simdPosition = positionToApply
-            scene.rootNode.childNode(withName: "campo", recursively: true)?.addChildNode(playerNode!)
+            field?.addChildNode(playerNode!)
             
             guard let playerN = playerNode else {continue}
             
