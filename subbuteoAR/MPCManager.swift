@@ -187,27 +187,71 @@ class MPCManager: NSObject,MCSessionDelegate,MCNearbyServiceAdvertiserDelegate,M
     /*funzione per inviare una stringa. Al ricevente sarà chiamata la funzione session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID). il file da inviare è un dictionary perchè il primo campo serve a distinguere il tipo di dato che  stato inviato e servirà al ricevente per accedere al dato giusto.
      Esempio: se sto inviando il tiro, il dictionary sarà : let dictionary = ["tiro","datodainviare"], mentre se mando la posizione sarà let dictionary = ["posizione", posizionedainviare]. In questo modo il ricevente userà rispettivamente dictionary["tiro"] o dictionary["posizione"].
      */
-    func sendData(dictionaryWithData dictionary: Dictionary<String, String>, toPeer targetPeers: [MCPeerID]) -> Bool {
+    func sendData(dictionaryWithData dictionary: Dictionary<String,String>, toPeer targetPeers: [MCPeerID]) -> Bool {
         
         let dataToSend = NSKeyedArchiver.archivedData(withRootObject: dictionary)
         let peersArray = targetPeers
         var success = true
-        
+
         do{
             try session.send(dataToSend, toPeers: peersArray, with: .reliable)
         } catch let error as NSError {
             print(error.localizedDescription)
             success = false
         }
-        
+
         return success
     }
     
-    func sendData(foulDataToSend foulData: FoulData, toPeers targets: [MCPeerID]) -> Bool{
+//    func sendData(foulDataToSend foulData: FoulData, toPeers targets: [MCPeerID]) -> Bool{
+//
+//        let encoder = JSONEncoder()
+//        do {
+//            let dictionary = [GameManager.foulDataKey: foulData]
+//            let jsonData = try encoder.encode(dictionary)
+//            let _ = String(data: jsonData, encoding: .utf8)
+//            try session.send(jsonData, toPeers: targets, with: .reliable)
+//            return true
+//        }
+//        catch {
+//            return false
+//        }
+//    }
+//
+//    func sendData(shotDataToSend shotData: ShotData, toPeers targets: [MCPeerID]) -> Bool{
+//
+//        let encoder = JSONEncoder()
+//        do {
+//            let dictionary = [GameManager.shotDataKey:shotData]
+//            let jsonData = try encoder.encode(dictionary)
+//            let _ = String(data: jsonData, encoding: .utf8)
+//            try session.send(jsonData, toPeers: targets, with: .reliable)
+//            return true
+//        }
+//        catch {
+//            return false
+//        }
+//    }
+//    func sendData(goalDataToSend goalData: GoalData, toPeers targets: [MCPeerID]) -> Bool{
+//
+//        let encoder = JSONEncoder()
+//        do {
+//            let dictionary = [GameManager.goalDataKey:goalData]
+//            let jsonData = try encoder.encode(dictionary)
+//            let _ = String(data: jsonData, encoding: .utf8)
+//            try session.send(jsonData, toPeers: targets, with: .reliable)
+//            return true
+//        }
+//        catch {
+//            return false
+//        }
+//    }
+    
+    func sendData(gameDataToSend gameData: GameData, toPeers targets: [MCPeerID]) -> Bool{
         
         let encoder = JSONEncoder()
         do {
-            let jsonData = try encoder.encode(foulData)
+            let jsonData = try encoder.encode(gameData)
             let _ = String(data: jsonData, encoding: .utf8)
             try session.send(jsonData, toPeers: targets, with: .reliable)
             return true
@@ -217,48 +261,6 @@ class MPCManager: NSObject,MCSessionDelegate,MCNearbyServiceAdvertiserDelegate,M
         }
     }
     
-    func sendData(shotDataToSend shotData: ShotData, toPeers targets: [MCPeerID]) -> Bool{
-        
-        let encoder = JSONEncoder()
-        do {
-            let jsonData = try encoder.encode(shotData)
-            let _ = String(data: jsonData, encoding: .utf8)
-            try session.send(jsonData, toPeers: targets, with: .reliable)
-            return true
-        }
-        catch {
-            return false
-        }
-    }
-    func sendData(goalDataToSend goalData: GoalData, toPeers targets: [MCPeerID]) -> Bool{
-        
-        let encoder = JSONEncoder()
-        do {
-            let jsonData = try encoder.encode(goalData)
-            let _ = String(data: jsonData, encoding: .utf8)
-            try session.send(jsonData, toPeers: targets, with: .reliable)
-            return true
-        }
-        catch {
-            return false
-        }
-    }
-    
-    func sendData(dictionaryWithData dictionary: Dictionary<String, Float>, toPeer targetPeers: [MCPeerID]) -> Bool {
-        
-        let dataToSend = NSKeyedArchiver.archivedData(withRootObject: dictionary)
-        let peersArray = targetPeers
-        var success = true
-        
-        do{
-            try session.send(dataToSend, toPeers: peersArray, with: .reliable)
-        } catch let error as NSError {
-            print(error.localizedDescription)
-            success = false
-        }
-        
-        return success
-    }
     
 }
 

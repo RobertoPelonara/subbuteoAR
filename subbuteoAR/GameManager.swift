@@ -9,20 +9,54 @@
 import Foundation
 import SceneKit
 
-struct FoulData: Codable {
+
+struct GameData: Codable {
     
-    var team: String
-    var position: SCNVector3
+    var shouldIStart:String?
+    var receivedDataType:String
+    var team: String?
+    var position: SCNVector3?
+    var force: SCNVector3?
+    var nodeName: String?
+    
+    
+    init(dataType:String,shouldIStart:String){
+        receivedDataType = dataType
+        self.shouldIStart = shouldIStart
+    }
+    init(dataType:String,team:String,FaulPosition position:SCNVector3){
+        receivedDataType = dataType
+        self.team = team
+        self.position = position
+    }
+    init(dataType:String,team:String){
+        receivedDataType = dataType
+        self.team = team
+    }
+    init(dataType:String,force:SCNVector3,nodeName:String){
+        receivedDataType = dataType
+        self.force = force
+        self.nodeName = nodeName
+        
+    }
+    
+    
 }
 
-struct GoalData: Codable {
-    var team: String
-}
-
-struct ShotData: Codable {
-    var force: SCNVector3
-    var nodeName: String
-}
+//struct FoulData  {
+//    
+//    var team: String
+//    var position: SCNVector3
+//}
+//
+//struct GoalData {
+//    var team: String
+//}
+//
+//struct ShotData {
+//    var force: SCNVector3
+//    var nodeName: String
+//}
 
 enum Turn {
     case home
@@ -51,7 +85,11 @@ class GameManager {
     
     static var fieldSize: CGSize = CGSize(width: 1.31 , height: 2.10)
     
-    
+    //keys for dictionary
+    static let foul = "foulData"
+    static let start = "start"
+    static let shot = "shotData"
+    static let goal = "goalData"
     
     
     

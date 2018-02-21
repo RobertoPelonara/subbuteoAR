@@ -73,11 +73,12 @@ extension ViewController {
         
         let impulseVector = direction * velocity
         
-        let shotToSend = ShotData(force: impulseVector, nodeName: (currentObject?.name)!)
+//        let shotToSend = ShotData(force: impulseVector, nodeName: (currentObject?.name)!)
+        let shotToSend = GameData(dataType:GameManager.shot, force: impulseVector, nodeName: (currentObject?.name)!)
         
         currentPlayer.physicsBody?.applyForce(impulseVector, asImpulse: true)
         
-        let _ = MPCManager.shared.sendData(shotDataToSend: shotToSend, toPeers: MPCManager.shared.session.connectedPeers)
+        let _ = MPCManager.shared.sendData(gameDataToSend: shotToSend, toPeers: MPCManager.shared.session.connectedPeers)
         currentObject = nil
         
     }

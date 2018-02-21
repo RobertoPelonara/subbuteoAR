@@ -88,15 +88,15 @@ class WaitingForMembersViewController: UIViewController, UITableViewDelegate,UIT
             
             let receivedDataDictionary = data as Dictionary<String,AnyObject>
             let data = receivedDataDictionary["data"] as? Data
-            
+
             if let dataDictionary = NSKeyedUnarchiver.unarchiveObject(with: data!) as? Dictionary<String,String> {
-                
+
                 if let stringa = dataDictionary["start"] {
                     if stringa == "yes"{
                         self.performSegue(withIdentifier: "waitToAR", sender: self)
                     }
                 }
-                
+
             }
         }
     }

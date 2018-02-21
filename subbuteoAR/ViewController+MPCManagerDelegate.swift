@@ -23,24 +23,36 @@ extension ViewController: MPCManagerDelegate {
     func handleReceivedData(data: [String : AnyObject]) {
         print("H R D")
         DispatchQueue.main.async {
-        
-        let receivedData = data["data"] as? Data
-            print("CRISTO \(receivedData)")
+            
+            let receivedData = data["data"] as? Data
             
             do{
-                let shotData = try JSONDecoder().decode(ShotData.self, from: receivedData!)
-                print("data received \(shotData.nodeName)")
-                let player = self.sceneView.scene.rootNode.childNode(withName: shotData.nodeName, recursively: true)
-                player?.physicsBody?.applyForce(shotData.force, asImpulse: true)
-                print("force applyed")
-            }
-            catch{
                 
+                let gameData = try JSONDecoder().decode(GameData.self, from: receivedData!)
+                
+                switch gameData.receivedDataType {
+                    
+                case GameManager.foul:
+                    break
+                    
+                case GameManager.shot:
+                    let player = self.sceneView.scene.rootNode.childNode(withName: gameData.nodeName!, recursively: true)
+                    player?.physicsBody?.applyForce(gameData.force!, asImpulse: true)
+                    print("FORCE APPLIED")
+                    break
+                case GameManager.goal:
+                    break
+                    
+                default:
+                    break
+                }
+                
+            }catch {
+                print("there was an error")
             }
             
-                
-            }
         }
-        
     }
+    
+}
 
