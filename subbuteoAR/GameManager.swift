@@ -30,13 +30,12 @@ enum Turn {
 }
 
 
-//TODO: creare classe per il campo per lo storing delle proprietà del campo
 
 class GameManager {
     
     
     var teams: [Turn: Team]?
-    
+    var ball: Ball?
     var currentTurn: Turn = .home
     
     var scoreHome: Int = 0
@@ -52,15 +51,13 @@ class GameManager {
     static var fieldSize: CGSize = CGSize(width: 1.31 , height: 2.10)
     
     
-    
-    
-    
     init (scene: SCNScene) {
         gameScene = scene
         
-        let teamAway = Team( "away", scene)
-        let teamHome = Team( "home", scene)
+        let teamAway = Team( "away", scene, .away)
+        let teamHome = Team( "home", scene, .home)
         teams = [.home: teamHome, .away: teamAway]
+        ball = Ball(node: scene.rootNode.childNode(withName: "ball", recursively: true)!)
         previousTimeInterval = Date().timeIntervalSince1970
         currentTimeInterval = Date().timeIntervalSince1970
         
@@ -104,7 +101,9 @@ class GameManager {
     func foul (committedBy: Turn, atPosition: SCNVector3){
         switch committedBy {
         case .home:
-            //            Il giocatore Away batte il calcio di punizione alla posizione "atPosition"
+            gameScene?.physicsWorld.speed = 0
+           ball?.node.simdPosition = float3(atPosition)
+           
             break
         case .away:
             //          Il giocatore Away batte il calcio di punizione alla posizione "atPosition"
@@ -116,6 +115,7 @@ class GameManager {
 class Team {
     var players: [Player] = []
     var id: String
+    var turn: Turn
     private var gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
     
     
@@ -132,10 +132,10 @@ class Team {
                                          float3(0.1, 0.6, 0),
                                          float3(0.1, -0.6, 0)]
     
-    init (_ id: String,_ scene: SCNScene){
+    init (_ id: String,_ scene: SCNScene, _ turn: Turn){
         self.id = id
         let field = scene.rootNode.childNode(withName: "campo", recursively: true)
-        
+        self.turn = turn
         for i in 0...10 {
             let playerScene = SCNScene(named: "Models.scnassets/Players + goal/\(id).scn")
             let playerNode = playerScene?.rootNode.childNode(withName: "player", recursively: true)
@@ -189,19 +189,21 @@ class Player {
     }
     
     func tick () {
-//        if gameManager == nil {
-//        gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
-//        }
-//        if abs(transform.translation.x) > Float(GameManager.fieldSize.width/2) ||
-//            abs(transform.translation.y) > Float(GameManager.fieldSize.height/2){
-//
-//
-//            let wPosition = abs(transform.translation.x) > Float(GameManager.fieldSize.width) ? Float(GameManager.fieldSize.width) : transform.translation.x
-//            let hPosition = abs(transform.translation.y) > Float(GameManager.fieldSize.height) ? Float(GameManager.fieldSize.height): transform.translation.y
-//
-//            let vector = SCNVector3(wPosition, hPosition, 0.001)
-//            transform.translation = float3(vector)
-//        }
+        
+        if gameManager == nil {
+            gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
+        }
+        
+        let collisionTest = gameManager?.gameScene?.physicsWorld.contactTest(with: node.physicsBody!, options: [SCNPhysicsWorld.TestOption.backfaceCulling : false]).first
+        if let collision = collisionTest?.nodeB {
+            if gameManager?.currentTurn != team.turn {
+                if collision == gameManager?.ball?.node {
+                    gameManager?.foul(committedBy: team.turn,
+                                      atPosition: collision.position)
+                }
+            }
+        }
+        
     }
 }
     
@@ -210,9 +212,7 @@ class Player {
         var node: SCNNode
         let transform: simd_float4x4
         private var gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
-        
-        
-        
+       
         init(node: SCNNode) {
             self.node = node
             transform = node.simdTransform
