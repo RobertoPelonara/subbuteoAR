@@ -21,9 +21,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
 
-    var canMoveField = true
-    // MARK: - UI Elements
+    @IBOutlet weak var placeFieldOutlet: UIButton!
     
+    var canMoveField = true
+    var settingFieldPosition = false
+    
+    // MARK: - UI Elements
     var focusSquare = FocusSquare()
     
     /// The view controller that displays the status and "restart experience" UI.
@@ -83,6 +86,10 @@ class ViewController: UIViewController {
           // Hook up status view controller callback(s).
         statusViewController.restartExperienceHandler = { [unowned self] in
             self.restartExperience()
+            
+            // Set up "Ready" button
+            
+            self.placeFieldOutlet.layer.cornerRadius = 500
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showVirtualObjectSelectionViewController))
@@ -137,20 +144,27 @@ class ViewController: UIViewController {
 
         statusViewController.scheduleMessage("FIND A SURFACE TO PLACE AN OBJECT", inSeconds: 7.5, messageType: .planeEstimation)
 	}
-
-    // MARK: - Focus Square
-
-    @IBAction func switchAction(_ sender: UISwitch) {
+    
+    @IBAction func placeFieldAction(_ sender: Any) {
         
         guard let fieldNode = sceneView.scene.rootNode.childNode(withName: "campo", recursively: true) else {return}
         
         if !canMoveField {fieldNode.geometry?.materials.first?.transparency = 0.75
-            } else {fieldNode.geometry?.materials.first?.transparency = 1}
+        } else {fieldNode.geometry?.materials.first?.transparency = 1}
         
         canMoveField = !canMoveField
         virtualObjectInteraction.canInteractWithObject = canMoveField
         
+        (UIApplication.shared.delegate as! AppDelegate).gameManager = GameManager.init(scene: self.sceneView.scene)
+        
+        fieldNode.childNode(withName: "Plane", recursively: true)?.geometry?.materials.first?.transparency = 1
+        placeFieldOutlet.isHidden = true
+        
+        
     }
+    
+    // MARK: - Focus Square
+
     func updateFocusSquare() {
         let isObjectVisible = virtualObjectLoader.loadedObjects.contains { object in
             return sceneView.isNode(object, insideFrustumOf: sceneView.pointOfView!)
@@ -178,7 +192,7 @@ class ViewController: UIViewController {
 			return
 		}
 		
-        addObjectButton.isHidden = false
+        if settingFieldPosition == false {addObjectButton.isHidden = false}
         statusViewController.cancelScheduledMessage(for: .focusSquare)
 	}
     

@@ -36,7 +36,10 @@ extension ViewController: UIGestureRecognizerDelegate {
                 self.hideObjectLoadingUI()
                 self.placeVirtualObject(loadedObject)
                 loadedObject.childNode(withName: "floor", recursively: true)?.categoryBitMask = 2
-                (UIApplication.shared.delegate as! AppDelegate).gameManager = GameManager.init(scene: self.sceneView.scene)
+
+                self.addObjectButton.isHidden = true
+                self.settingFieldPosition = true
+                self.placeFieldOutlet.isHidden = false
                 
             }
         })
