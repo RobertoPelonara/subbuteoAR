@@ -24,8 +24,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var placeFieldOutlet: UIButton!
     
     var canMoveField = true
-    // MARK: - UI Elements
+    var settingFieldPosition = false
     
+    // MARK: - UI Elements
     var focusSquare = FocusSquare()
     
     /// The view controller that displays the status and "restart experience" UI.
@@ -85,6 +86,10 @@ class ViewController: UIViewController {
           // Hook up status view controller callback(s).
         statusViewController.restartExperienceHandler = { [unowned self] in
             self.restartExperience()
+            
+            // Set up "Ready" button
+            
+            self.placeFieldOutlet.layer.cornerRadius = 500
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showVirtualObjectSelectionViewController))
@@ -187,7 +192,7 @@ class ViewController: UIViewController {
 			return
 		}
 		
-        addObjectButton.isHidden = false
+        if settingFieldPosition == false {addObjectButton.isHidden = false}
         statusViewController.cancelScheduledMessage(for: .focusSquare)
 	}
     

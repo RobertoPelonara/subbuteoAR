@@ -22,6 +22,8 @@ class StatusViewController: UIViewController {
          super.viewWillAppear(animated)
         
          self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        restartExperienceButton.isHidden = true
     }
     enum MessageType {
         case trackingStateEscalation

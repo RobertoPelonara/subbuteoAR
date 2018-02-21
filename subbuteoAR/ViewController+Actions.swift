@@ -38,6 +38,7 @@ extension ViewController: UIGestureRecognizerDelegate {
                 loadedObject.childNode(withName: "floor", recursively: true)?.categoryBitMask = 2
 
                 self.addObjectButton.isHidden = true
+                self.settingFieldPosition = true
                 self.placeFieldOutlet.isHidden = false
                 
             }
