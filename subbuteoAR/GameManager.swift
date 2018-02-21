@@ -78,6 +78,16 @@ class GameManager {
     var maxScore: Int = 3
     var deltaTime: Double?
     
+    static var fieldTexture = #imageLiteral(resourceName: "field1.png")
+    
+    static var availableFields = [#imageLiteral(resourceName: "field1.png"),
+                                  #imageLiteral(resourceName: "field2.png"),
+                                  #imageLiteral(resourceName: "field3.png"),
+                                  #imageLiteral(resourceName: "field4.png"),
+                                  #imageLiteral(resourceName: "field5.png"),
+                                  #imageLiteral(resourceName: "field6.png"),
+                                  #imageLiteral(resourceName: "field7.png")]
+    
     private var previousTimeInterval: TimeInterval
     private var currentTimeInterval: TimeInterval
     var gameScene: SCNScene?
@@ -133,19 +143,19 @@ class GameManager {
     
     
     func foul (committedBy: Turn, atPosition: SCNVector3){
-        switch committedBy {
-        case .home:
-            print("Home Foul")
-            gameScene?.physicsWorld.speed = 0
-           ball?.node.simdPosition = float3(atPosition)
-           
-            break
-        case .away:
-            print("Away Foul")
-            gameScene?.physicsWorld.speed = 0
-            ball?.node.simdPosition = float3(atPosition)
-            break
-        }
+//        switch committedBy {
+//        case .home:
+//            print("Home Foul")
+//            gameScene?.physicsWorld.speed = 0
+//           ball?.node.simdPosition = float3(atPosition)
+//           
+//            break
+//        case .away:
+//            print("Away Foul")
+//            gameScene?.physicsWorld.speed = 0
+//            ball?.node.simdPosition = float3(atPosition)
+//            break
+//        }
     }
 }
 
@@ -260,17 +270,8 @@ class Player {
         func tick () {
             //        Check if position of the ball is off of the ground
             //        TODO: Clean this mess
-            if abs(transform.translation.x) > Float(GameManager.fieldSize.width) ||
-                abs(transform.translation.y) > Float(GameManager.fieldSize.height){
-                
-                let wPosition = abs(transform.translation.x) > Float(GameManager.fieldSize.width) ? Float(GameManager.fieldSize.width) : transform.translation.x
-                let hPosition = abs(transform.translation.y) > Float(GameManager.fieldSize.height) ? Float(GameManager.fieldSize.height): transform.translation.y
-                
-                
-                let vector = SCNVector3(wPosition, hPosition, 0.001)
-                gameManager?.foul(committedBy: (gameManager?.currentTurn)!, atPosition: vector)
-                
-            }
+           
+            
         }
         
     }
