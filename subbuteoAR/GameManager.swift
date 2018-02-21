@@ -140,14 +140,14 @@ class GameManager {
     
     
     func foul (committedBy: Turn, atPosition: SCNVector3){
-        switch committedBy {
-        case .home:
-            //            Il giocatore Away batte il calcio di punizione alla posizione "atPosition"
-            break
-        case .away:
-            //          Il giocatore Away batte il calcio di punizione alla posizione "atPosition"
-            break
-        }
+//        switch committedBy {
+//        case .home:
+//            //            Il giocatore Away batte il calcio di punizione alla posizione "atPosition"
+//            break
+//        case .away:
+//            //          Il giocatore Away batte il calcio di punizione alla posizione "atPosition"
+//            break
+//        }
     }
 }
 
