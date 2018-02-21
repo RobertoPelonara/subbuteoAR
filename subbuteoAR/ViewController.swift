@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
 
+    @IBOutlet weak var placeFieldOutlet: UIButton!
+    
     var canMoveField = true
     // MARK: - UI Elements
     
@@ -137,20 +139,26 @@ class ViewController: UIViewController {
 
         statusViewController.scheduleMessage("FIND A SURFACE TO PLACE AN OBJECT", inSeconds: 7.5, messageType: .planeEstimation)
 	}
-
-    // MARK: - Focus Square
-
-    @IBAction func switchAction(_ sender: UISwitch) {
+    
+    @IBAction func placeFieldAction(_ sender: Any) {
         
         guard let fieldNode = sceneView.scene.rootNode.childNode(withName: "campo", recursively: true) else {return}
         
         if !canMoveField {fieldNode.geometry?.materials.first?.transparency = 0.75
-            } else {fieldNode.geometry?.materials.first?.transparency = 1}
+        } else {fieldNode.geometry?.materials.first?.transparency = 1}
         
         canMoveField = !canMoveField
         virtualObjectInteraction.canInteractWithObject = canMoveField
         
+        (UIApplication.shared.delegate as! AppDelegate).gameManager = GameManager.init(scene: self.sceneView.scene)
+        
+        placeFieldOutlet.isHidden = true
+        
+        
     }
+    
+    // MARK: - Focus Square
+
     func updateFocusSquare() {
         let isObjectVisible = virtualObjectLoader.loadedObjects.contains { object in
             return sceneView.isNode(object, insideFrustumOf: sceneView.pointOfView!)
