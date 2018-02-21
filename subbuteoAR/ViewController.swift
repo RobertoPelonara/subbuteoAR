@@ -86,6 +86,10 @@ class ViewController: UIViewController {
           // Hook up status view controller callback(s).
         statusViewController.restartExperienceHandler = { [unowned self] in
             self.restartExperience()
+            
+            // Set up "Ready" button
+            
+            self.placeFieldOutlet.layer.cornerRadius = 500
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showVirtualObjectSelectionViewController))
