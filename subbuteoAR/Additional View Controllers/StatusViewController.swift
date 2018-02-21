@@ -17,6 +17,12 @@ import ARKit
 class StatusViewController: UIViewController {
     // MARK: - Types
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+         super.viewWillAppear(animated)
+        
+         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     enum MessageType {
         case trackingStateEscalation
         case planeEstimation
