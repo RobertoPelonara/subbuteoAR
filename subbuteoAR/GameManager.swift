@@ -189,18 +189,19 @@ class Player {
     }
     
     func tick () {
-        if gameManager == nil {
-        gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
-        }
-        if abs(transform.translation.x) > Float(GameManager.fieldSize.width) ||
-            abs(transform.translation.y) > Float(GameManager.fieldSize.height){
-            
-            let wPosition = abs(transform.translation.x) > Float(GameManager.fieldSize.width) ? Float(GameManager.fieldSize.width) : transform.translation.x
-            let hPosition = abs(transform.translation.y) > Float(GameManager.fieldSize.height) ? Float(GameManager.fieldSize.height): transform.translation.y
-            
-            let vector = SCNVector3(wPosition, hPosition, 0.001)
-            transform.translation = float3(vector)
-        }
+//        if gameManager == nil {
+//        gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
+//        }
+//        if abs(transform.translation.x) > Float(GameManager.fieldSize.width/2) ||
+//            abs(transform.translation.y) > Float(GameManager.fieldSize.height/2){
+//
+//
+//            let wPosition = abs(transform.translation.x) > Float(GameManager.fieldSize.width) ? Float(GameManager.fieldSize.width) : transform.translation.x
+//            let hPosition = abs(transform.translation.y) > Float(GameManager.fieldSize.height) ? Float(GameManager.fieldSize.height): transform.translation.y
+//
+//            let vector = SCNVector3(wPosition, hPosition, 0.001)
+//            transform.translation = float3(vector)
+//        }
     }
 }
     
