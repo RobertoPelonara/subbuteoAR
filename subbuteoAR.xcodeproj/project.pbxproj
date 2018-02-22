@@ -26,6 +26,15 @@
 		C8C2AC521F3A545C00E86BA3 /* VirtualObjectInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C2AC511F3A545C00E86BA3 /* VirtualObjectInteraction.swift */; };
 		C8D71A001F3B7D3D0086AD64 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D719FF1F3B7D3D0086AD64 /* Field.swift */; };
 		E31E0E92203CA1FB000154F2 /* ViewController+ContactDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E0E91203CA1FB000154F2 /* ViewController+ContactDelegate.swift */; };
+		E34FFF3C203DECF100CE7DC8 /* FieldSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34FFF3B203DECF100CE7DC8 /* FieldSelectionViewController.swift */; };
+		E34FFF3E203DF5DF00CE7DC8 /* FieldsTextures in Resources */ = {isa = PBXBuildFile; fileRef = E34FFF3D203DF5DF00CE7DC8 /* FieldsTextures */; };
+		E34FFF47203DF77B00CE7DC8 /* field5.png in Resources */ = {isa = PBXBuildFile; fileRef = E34FFF40203DF77A00CE7DC8 /* field5.png */; };
+		E34FFF48203DF77B00CE7DC8 /* field7.png in Resources */ = {isa = PBXBuildFile; fileRef = E34FFF41203DF77A00CE7DC8 /* field7.png */; };
+		E34FFF49203DF77B00CE7DC8 /* field4.png in Resources */ = {isa = PBXBuildFile; fileRef = E34FFF42203DF77A00CE7DC8 /* field4.png */; };
+		E34FFF4A203DF77B00CE7DC8 /* field6.png in Resources */ = {isa = PBXBuildFile; fileRef = E34FFF43203DF77A00CE7DC8 /* field6.png */; };
+		E34FFF4B203DF77B00CE7DC8 /* field2.png in Resources */ = {isa = PBXBuildFile; fileRef = E34FFF44203DF77A00CE7DC8 /* field2.png */; };
+		E34FFF4C203DF77B00CE7DC8 /* field1.png in Resources */ = {isa = PBXBuildFile; fileRef = E34FFF45203DF77B00CE7DC8 /* field1.png */; };
+		E34FFF4D203DF77B00CE7DC8 /* field3.png in Resources */ = {isa = PBXBuildFile; fileRef = E34FFF46203DF77B00CE7DC8 /* field3.png */; };
 		E396027B2036D99000CD4A1C /* ViewController+PlayerMovements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396027A2036D99000CD4A1C /* ViewController+PlayerMovements.swift */; };
 		E3C5912020372903002877C4 /* peerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C5911F20372903002877C4 /* peerViewController.swift */; };
 		E3FF7CE4203C279B00FD9FBA /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF7CE3203C279B00FD9FBA /* GameManager.swift */; };
@@ -57,6 +66,15 @@
 		C8C2AC511F3A545C00E86BA3 /* VirtualObjectInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectInteraction.swift; sourceTree = "<group>"; };
 		C8D719FF1F3B7D3D0086AD64 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		E31E0E91203CA1FB000154F2 /* ViewController+ContactDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ContactDelegate.swift"; sourceTree = "<group>"; };
+		E34FFF3B203DECF100CE7DC8 /* FieldSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldSelectionViewController.swift; sourceTree = "<group>"; };
+		E34FFF3D203DF5DF00CE7DC8 /* FieldsTextures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FieldsTextures; sourceTree = "<group>"; };
+		E34FFF40203DF77A00CE7DC8 /* field5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field5.png; sourceTree = "<group>"; };
+		E34FFF41203DF77A00CE7DC8 /* field7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field7.png; sourceTree = "<group>"; };
+		E34FFF42203DF77A00CE7DC8 /* field4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field4.png; sourceTree = "<group>"; };
+		E34FFF43203DF77A00CE7DC8 /* field6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field6.png; sourceTree = "<group>"; };
+		E34FFF44203DF77A00CE7DC8 /* field2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field2.png; sourceTree = "<group>"; };
+		E34FFF45203DF77B00CE7DC8 /* field1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field1.png; sourceTree = "<group>"; };
+		E34FFF46203DF77B00CE7DC8 /* field3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field3.png; sourceTree = "<group>"; };
 		E396027A2036D99000CD4A1C /* ViewController+PlayerMovements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+PlayerMovements.swift"; sourceTree = "<group>"; };
 		E3C5911F20372903002877C4 /* peerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peerViewController.swift; sourceTree = "<group>"; };
 		E3FF7CE3203C279B00FD9FBA /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
@@ -99,6 +117,7 @@
 			children = (
 				E3C5911F20372903002877C4 /* peerViewController.swift */,
 				C41366B81EB80DD400EC054A /* StatusViewController.swift */,
+				E34FFF3B203DECF100CE7DC8 /* FieldSelectionViewController.swift */,
 			);
 			path = "Additional View Controllers";
 			sourceTree = "<group>";
@@ -106,6 +125,7 @@
 		1488324C1EFC3ED00043E0AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E34FFF3F203DF76600CE7DC8 /* FieldsTextures */,
 				3929C49E1E89EE4400E00B60 /* Models.scnassets */,
 				3929C4921E89EC2C00E00B60 /* Assets.xcassets */,
 				3929C4971E89EC2C00E00B60 /* Info.plist */,
@@ -118,6 +138,7 @@
 		3929C47F1E89EC2C00E00B60 = {
 			isa = PBXGroup;
 			children = (
+				E34FFF3D203DF5DF00CE7DC8 /* FieldsTextures */,
 				3929C48A1E89EC2C00E00B60 /* subbuteoAR */,
 				3929C4891E89EC2C00E00B60 /* Products */,
 			);
@@ -165,6 +186,20 @@
 				C46356651EF9CB1A0080C8D9 /* FieldLoader.swift */,
 			);
 			path = "Virtual Objects";
+			sourceTree = "<group>";
+		};
+		E34FFF3F203DF76600CE7DC8 /* FieldsTextures */ = {
+			isa = PBXGroup;
+			children = (
+				E34FFF45203DF77B00CE7DC8 /* field1.png */,
+				E34FFF44203DF77A00CE7DC8 /* field2.png */,
+				E34FFF46203DF77B00CE7DC8 /* field3.png */,
+				E34FFF42203DF77A00CE7DC8 /* field4.png */,
+				E34FFF40203DF77A00CE7DC8 /* field5.png */,
+				E34FFF43203DF77A00CE7DC8 /* field6.png */,
+				E34FFF41203DF77A00CE7DC8 /* field7.png */,
+			);
+			name = FieldsTextures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,10 +263,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E34FFF4D203DF77B00CE7DC8 /* field3.png in Resources */,
+				E34FFF4C203DF77B00CE7DC8 /* field1.png in Resources */,
+				E34FFF3E203DF5DF00CE7DC8 /* FieldsTextures in Resources */,
 				3929C49F1E89EE4400E00B60 /* Models.scnassets in Resources */,
 				39D8DC1B1E8ADAE600386B05 /* LaunchScreen.storyboard in Resources */,
+				E34FFF4A203DF77B00CE7DC8 /* field6.png in Resources */,
 				3929C4931E89EC2C00E00B60 /* Assets.xcassets in Resources */,
+				E34FFF47203DF77B00CE7DC8 /* field5.png in Resources */,
+				E34FFF49203DF77B00CE7DC8 /* field4.png in Resources */,
+				E34FFF4B203DF77B00CE7DC8 /* field2.png in Resources */,
 				3929C4911E89EC2C00E00B60 /* Main.storyboard in Resources */,
+				E34FFF48203DF77B00CE7DC8 /* field7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +302,7 @@
 				148832411EFC3B250043E0AB /* FocusSquareSegment.swift in Sources */,
 				E396027B2036D99000CD4A1C /* ViewController+PlayerMovements.swift in Sources */,
 				FE8782E1203720B100970449 /* ViewController+MPCManagerDelegate.swift in Sources */,
+				E34FFF3C203DECF100CE7DC8 /* FieldSelectionViewController.swift in Sources */,
 				E3FF7CE4203C279B00FD9FBA /* GameManager.swift in Sources */,
 				C8D71A001F3B7D3D0086AD64 /* Field.swift in Sources */,
 				C42A71BD1E9C0AF200944367 /* FocusSquare.swift in Sources */,

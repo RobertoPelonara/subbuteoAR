@@ -64,13 +64,12 @@ enum Turn {
 }
 
 
-//TODO: creare classe per il campo per lo storing delle proprietà del campo
 
 class GameManager {
     
     
     var teams: [Turn: Team]?
-    
+    var ball: Ball?
     var currentTurn: Turn = .home
     
     var scoreHome: Int = 0
@@ -79,26 +78,30 @@ class GameManager {
     var maxScore: Int = 3
     var deltaTime: Double?
     
+    static var fieldTexture = #imageLiteral(resourceName: "field1.png")
+    
+    static var availableFields = [#imageLiteral(resourceName: "field1.png"),
+                                  #imageLiteral(resourceName: "field2.png"),
+                                  #imageLiteral(resourceName: "field3.png"),
+                                  #imageLiteral(resourceName: "field4.png"),
+                                  #imageLiteral(resourceName: "field5.png"),
+                                  #imageLiteral(resourceName: "field6.png"),
+                                  #imageLiteral(resourceName: "field7.png")]
+    
     private var previousTimeInterval: TimeInterval
     private var currentTimeInterval: TimeInterval
     var gameScene: SCNScene?
     
     static var fieldSize: CGSize = CGSize(width: 1.31 , height: 2.10)
     
-    //keys for dictionary
-    static let foul = "foulData"
-    static let start = "start"
-    static let shot = "shotData"
-    static let goal = "goalData"
-    
-    
     
     init (scene: SCNScene) {
         gameScene = scene
         
-        let teamAway = Team( "away", scene)
-        let teamHome = Team( "home", scene)
+        let teamAway = Team( "away", scene, .away)
+        let teamHome = Team( "home", scene, .home)
         teams = [.home: teamHome, .away: teamAway]
+        ball = Ball(node: scene.rootNode.childNode(withName: "ball", recursively: true)!)
         previousTimeInterval = Date().timeIntervalSince1970
         currentTimeInterval = Date().timeIntervalSince1970
         
@@ -142,10 +145,15 @@ class GameManager {
     func foul (committedBy: Turn, atPosition: SCNVector3){
 //        switch committedBy {
 //        case .home:
-//            //            Il giocatore Away batte il calcio di punizione alla posizione "atPosition"
+//            print("Home Foul")
+//            gameScene?.physicsWorld.speed = 0
+//           ball?.node.simdPosition = float3(atPosition)
+//           
 //            break
 //        case .away:
-//            //          Il giocatore Away batte il calcio di punizione alla posizione "atPosition"
+//            print("Away Foul")
+//            gameScene?.physicsWorld.speed = 0
+//            ball?.node.simdPosition = float3(atPosition)
 //            break
 //        }
     }
@@ -154,6 +162,7 @@ class GameManager {
 class Team {
     var players: [Player] = []
     var id: String
+    var turn: Turn
     private var gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
     
     
@@ -170,7 +179,7 @@ class Team {
                                          float3(0.1, 0.6, 0.1),
                                          float3(0.1, -0.6, 0.1)]
     
-    init (_ id: String,_ scene: SCNScene){
+    init (_ id: String,_ scene: SCNScene, _ turn: Turn){
         self.id = id
         guard let field = scene.rootNode.childNode(withName: "campo", recursively: true)?.childNode(withName: "Plane", recursively: true) else {return}
         
@@ -228,19 +237,22 @@ class Player {
     }
     
     func tick () {
-//        if gameManager == nil {
-//        gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
-//        }
-//        if abs(transform.translation.x) > Float(GameManager.fieldSize.width/2) ||
-//            abs(transform.translation.y) > Float(GameManager.fieldSize.height/2){
-//
-//
-//            let wPosition = abs(transform.translation.x) > Float(GameManager.fieldSize.width) ? Float(GameManager.fieldSize.width) : transform.translation.x
-//            let hPosition = abs(transform.translation.y) > Float(GameManager.fieldSize.height) ? Float(GameManager.fieldSize.height): transform.translation.y
-//
-//            let vector = SCNVector3(wPosition, hPosition, 0.001)
-//            transform.translation = float3(vector)
-//        }
+        
+        if gameManager == nil {
+            gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
+        }
+        
+        let collisionTest = gameManager?.gameScene?.physicsWorld.contactTest(with: node.physicsBody!, options: [SCNPhysicsWorld.TestOption.backfaceCulling : false]).first
+        if let collision = collisionTest?.nodeB {
+            if gameManager?.currentTurn != team.turn {
+                if collision == gameManager?.ball?.node {
+                    node.simdPosition = node.simdPosition - (collision.simdPosition - node.simdPosition)
+                    gameManager?.foul(committedBy: team.turn,
+                                      atPosition: collision.position)
+                }
+            }
+        }
+        
     }
 }
     
@@ -249,28 +261,18 @@ class Player {
         var node: SCNNode
         let transform: simd_float4x4
         private var gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
-        
-        
-        
+       
         init(node: SCNNode) {
             self.node = node
+            node.physicsBody?.type = .dynamic
             transform = node.simdTransform
         }
         
         func tick () {
             //        Check if position of the ball is off of the ground
             //        TODO: Clean this mess
-            if abs(transform.translation.x) > Float(GameManager.fieldSize.width) ||
-                abs(transform.translation.y) > Float(GameManager.fieldSize.height){
-                
-                let wPosition = abs(transform.translation.x) > Float(GameManager.fieldSize.width) ? Float(GameManager.fieldSize.width) : transform.translation.x
-                let hPosition = abs(transform.translation.y) > Float(GameManager.fieldSize.height) ? Float(GameManager.fieldSize.height): transform.translation.y
-                
-                
-                let vector = SCNVector3(wPosition, hPosition, 0.001)
-                gameManager?.foul(committedBy: (gameManager?.currentTurn)!, atPosition: vector)
-                
-            }
+           
+            
         }
         
     }
