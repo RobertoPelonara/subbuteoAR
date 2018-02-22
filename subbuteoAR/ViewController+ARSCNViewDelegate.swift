@@ -13,6 +13,10 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         DispatchQueue.main.async {
+            if !self.canMoveField {
+                self.sceneView.session.setWorldOrigin(relativeTransform: (self.sceneView.scene.rootNode.childNode(withName: "campo", recursively: true)!.simdWorldTransform))
+                self.sceneView.scene.rootNode.childNode(withName: "campo", recursively: true)?.simdWorldTransform = self.sceneView.scene.rootNode.simdWorldTransform
+            }
             self.virtualObjectInteraction.updateObjectToCurrentTrackingPosition()
             self.updateFocusSquare()
             
