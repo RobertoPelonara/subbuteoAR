@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14087.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZhL-hL-Cxe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZhL-hL-Cxe">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14075.4"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -176,7 +175,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJg-Jw-HXU">
-                                <rect key="frame" x="100" y="455" width="176" height="56"/>
+                                <rect key="frame" x="100" y="413" width="176" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="host"/>
                                 <connections>
@@ -185,7 +184,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDF-15-U4l">
-                                <rect key="frame" x="100" y="546" width="176" height="56"/>
+                                <rect key="frame" x="100" y="504" width="176" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="join"/>
                                 <connections>
@@ -193,34 +192,24 @@
                                     <segue destination="Yr1-RP-45c" kind="show" id="QKk-Pn-A48"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zU3-ip-ajD">
+                                <rect key="frame" x="299" y="587" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="skinField"/>
+                                <connections>
+                                    <segue destination="riS-FE-p5g" kind="show" id="73B-9f-fA1"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLI-4s-Sgn">
-                                <rect key="frame" x="153" y="360" width="71" height="30"/>
+                                <rect key="frame" x="16" y="617" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="AR (TEST)"/>
                                 <connections>
                                     <segue destination="BV1-FR-VrT" kind="show" id="3Ys-Bd-tOO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zU3-ip-ajD">
-                                <rect key="frame" x="298" y="602" width="61" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="zU3-ip-ajD" secondAttribute="height" multiplier="66:49" id="eQb-OQ-edL"/>
-                                </constraints>
-                                <state key="normal" title="Field" backgroundImage="but_background"/>
-                                <connections>
-                                    <segue destination="riS-FE-p5g" kind="show" id="73B-9f-fA1"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="zU3-ip-ajD" firstAttribute="leading" secondItem="7cm-xX-cN3" secondAttribute="leading" constant="298" id="Ctw-4g-XrV"/>
-                            <constraint firstItem="7cm-xX-cN3" firstAttribute="trailing" secondItem="zU3-ip-ajD" secondAttribute="trailing" constant="16" id="Gkc-7B-VDf"/>
-                            <constraint firstItem="zU3-ip-ajD" firstAttribute="top" secondItem="7cm-xX-cN3" secondAttribute="top" constant="538" id="HEt-mR-s4a"/>
-                            <constraint firstItem="7cm-xX-cN3" firstAttribute="trailing" secondItem="zU3-ip-ajD" secondAttribute="trailing" constant="16" id="eUb-Y7-8IN"/>
-                            <constraint firstItem="7cm-xX-cN3" firstAttribute="bottom" secondItem="zU3-ip-ajD" secondAttribute="bottom" constant="20" id="hA4-cI-HLj"/>
-                            <constraint firstItem="7cm-xX-cN3" firstAttribute="bottom" secondItem="zU3-ip-ajD" secondAttribute="bottom" constant="20" id="rjt-7X-0is"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7cm-xX-cN3"/>
                     </view>
                     <navigationItem key="navigationItem" id="9Yr-6a-bRi"/>
@@ -434,16 +423,18 @@
         <image name="Ready" width="221" height="69"/>
         <image name="add" width="48" height="48"/>
         <image name="background" width="375" height="667"/>
+        <image name="backgroundJoinHome" width="375" height="667"/>
         <image name="but_background" width="176" height="133"/>
         <image name="field2.png" width="942" height="589"/>
         <image name="host" width="221" height="69"/>
         <image name="join" width="221" height="70"/>
         <image name="restart" width="20" height="23"/>
         <image name="restartPressed" width="20" height="23"/>
+        <image name="skinField" width="72" height="70"/>
         <image name="start" width="221" height="69"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="X1t-zi-ShD"/>
-        <segue reference="M9N-Oq-flk"/>
+        <segue reference="3Ys-Bd-tOO"/>
+        <segue reference="6Bj-sD-BlV"/>
     </inferredMetricsTieBreakers>
 </document>

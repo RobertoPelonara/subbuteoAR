@@ -16,6 +16,11 @@ class FieldSelectionViewCell: UICollectionViewCell{
 
 class FieldSelectionViewController: UICollectionViewController {
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fieldSelection", for: indexPath) as? FieldSelectionViewCell  else {
             fatalError("The dequeued cell is not an instance of CampaignTableViewCell.")
