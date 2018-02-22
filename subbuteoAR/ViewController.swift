@@ -155,11 +155,18 @@ class ViewController: UIViewController {
         canMoveField = !canMoveField
         virtualObjectInteraction.canInteractWithObject = canMoveField
         
+        fieldNode.childNode(withName: "Plane", recursively: true)?.geometry?.materials.first?.transparency = 1
+        
+        self.sceneView.session.setWorldOrigin(relativeTransform: (fieldNode.parent?.simdWorldTransform)!)
+        fieldNode.parent?.simdWorldTransform = sceneView.scene.rootNode.simdWorldTransform
+        print("\(fieldNode.worldPosition)")
+        
+        
         (UIApplication.shared.delegate as! AppDelegate).gameManager = GameManager.init(scene: self.sceneView.scene)
         
-        fieldNode.childNode(withName: "Plane", recursively: true)?.geometry?.materials.first?.transparency = 1
         placeFieldOutlet.isHidden = true
         
+        print("\(fieldNode.childNode(withName: "Plane", recursively: true)!.childNodes.count) players found")
         
     }
     

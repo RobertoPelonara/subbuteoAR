@@ -158,21 +158,23 @@ class Team {
     
     
     
-    var homePlayersPosition: [float3] = [float3(0.8, 0, 0),
-                                         float3(0.5, 0.9, 0),
-                                         float3(0.5, 0.6, 0),
-                                         float3(0.5, 0.3, 0),
-                                         float3(0.5, 0, 0),
-                                         float3(0.5, -0.3, 0),
-                                         float3(0.5, -0.6, 0),
-                                         float3(0.5, -0.9, 0),
-                                         float3(0.1, 0, 0),
-                                         float3(0.1, 0.6, 0),
-                                         float3(0.1, -0.6, 0)]
+    var homePlayersPosition: [float3] = [float3(0.8, 0, 0.1),
+                                         float3(0.5, 0.9, 0.1),
+                                         float3(0.5, 0.6, 0.1),
+                                         float3(0.5, 0.3, 0.1),
+                                         float3(0.5, 0, 0.1),
+                                         float3(0.5, -0.3, 0.1),
+                                         float3(0.5, -0.6, 0.1),
+                                         float3(0.5, -0.9, 0.1),
+                                         float3(0.1, 0, 0.1),
+                                         float3(0.1, 0.6, 0.1),
+                                         float3(0.1, -0.6, 0.1)]
     
     init (_ id: String,_ scene: SCNScene){
         self.id = id
-        let field = scene.rootNode.childNode(withName: "campo", recursively: true)
+        guard let field = scene.rootNode.childNode(withName: "campo", recursively: true)?.childNode(withName: "Plane", recursively: true) else {return}
+        
+        print("field exists!")
         
         for i in 0...10 {
             let playerScene = SCNScene(named: "Models.scnassets/Players + goal/\(id).scn")
@@ -187,11 +189,10 @@ class Team {
                                               y: homePlayersPosition[i].y * moltiplier * Float(halfFieldSize.height),
                                               z: homePlayersPosition[i].z)
             
-            playerNode?.simdPosition = positionToApply
-            field?.addChildNode(playerNode!)
+            playerNode?.simdWorldPosition = positionToApply
+            field.addChildNode(playerNode!)
             
             guard let playerN = playerNode else {continue}
-            
             let playerToAdd = Player (node: playerN, team: self)
             players.append(playerToAdd)
             
