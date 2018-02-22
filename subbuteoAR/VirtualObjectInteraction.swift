@@ -130,7 +130,7 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
           To make rotation also work correctly when looking from below the object one would have to
           flip the sign of the angle depending on whether the object is above or below the camera...
          */
-        trackedObject?.objectRotation -= Float(gesture.rotation)
+        trackedObject?.eulerAngles.y -= Float(gesture.rotation)
         
         gesture.rotation = 0
         }
