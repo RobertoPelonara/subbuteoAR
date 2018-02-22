@@ -67,7 +67,10 @@ enum Turn {
 
 class GameManager {
     
-    
+    static let foulKey = "foul"
+    static let goalKey = "goal"
+    static let shotKey = "shot"
+    static let startKey = "start"
     var teams: [Turn: Team]?
     var ball: Ball?
     var currentTurn: Turn = .home
