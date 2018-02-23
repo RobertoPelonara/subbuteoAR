@@ -53,9 +53,9 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
         rotationGesture.delegate = self
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
-        tapGesture.cancelsTouchesInView = false
-        rotationGesture.cancelsTouchesInView = false
-        panGesture.cancelsTouchesInView = false
+        tapGesture.cancelsTouchesInView = true
+        rotationGesture.cancelsTouchesInView = true
+        panGesture.cancelsTouchesInView = true
         // Add gestures to the `sceneView`.
         sceneView.addGestureRecognizer(panGesture)
         sceneView.addGestureRecognizer(rotationGesture)
