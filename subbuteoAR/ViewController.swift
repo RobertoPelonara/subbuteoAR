@@ -161,6 +161,9 @@ class ViewController: UIViewController {
         fieldNode.parent?.simdWorldTransform = sceneView.scene.rootNode.simdWorldTransform
         print("\(fieldNode.worldPosition)")
         
+        for recognizer in sceneView.gestureRecognizers! {
+            recognizer.cancelsTouchesInView = false
+        }
         
         (UIApplication.shared.delegate as! AppDelegate).gameManager = GameManager.init(scene: self.sceneView.scene)
         
