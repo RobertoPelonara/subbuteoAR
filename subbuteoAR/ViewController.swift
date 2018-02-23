@@ -40,8 +40,10 @@ class ViewController: UIViewController {
     var touchStartTime: TimeInterval?
     var touchEndTime: TimeInterval?
     var currentObject: SCNNode?
-    var velocityToApply: Float = 2.0
     
+    var velocityToApply: Float = 1.0
+    var touchStartPositionScreen: CGPoint?
+    var touchEndPositionScreen: CGPoint?
     
    // MARK: - ARKit Configuration Properties
     
