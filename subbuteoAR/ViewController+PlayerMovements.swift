@@ -75,12 +75,12 @@ extension ViewController {
         
         let distanceValue = distance(pointA: touchStartPositionScreen!, pointB: touchEndPositionScreen!)
         
-        print("DIOCRISTO INFAME \(distanceValue)")
+        print("DistanceValue:\(distanceValue)")
         
         let module = distanceValue.map(from: 0.0...700, to: 1.0...3.0)
         
         if module > 1.1 {
-        print("DIOCRISTO BASTARDO \(module)")
+            print("Modulo: \(module)")
         let impulseVector = direction * velocity * module
         
 //        let shotToSend = ShotData(force: impulseVector, nodeName: (currentObject?.name)!)
