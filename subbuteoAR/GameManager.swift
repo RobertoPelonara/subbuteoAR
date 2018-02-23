@@ -104,7 +104,7 @@ class GameManager {
         let teamAway = Team( "away", scene, .away)
         let teamHome = Team( "home", scene, .home)
         teams = [.home: teamHome, .away: teamAway]
-        ball = Ball(node: scene.rootNode.childNode(withName: "ball", recursively: true)!)
+//        ball = Ball(node: scene.rootNode.childNode(withName: "ball", recursively: true)!)
         previousTimeInterval = Date().timeIntervalSince1970
         currentTimeInterval = Date().timeIntervalSince1970
         
@@ -170,17 +170,17 @@ class Team {
     
     
     
-    var homePlayersPosition: [float3] = [float3(0.8, 0, 0),
-                                         float3(0.5, 0.9, 0),
-                                         float3(0.5, 0.6, 0),
-                                         float3(0.5, 0.3, 0),
-                                         float3(0.5, 0, 0),
-                                         float3(0.5, -0.3, 0),
-                                         float3(0.5, -0.6, 0),
-                                         float3(0.5, -0.9, 0),
-                                         float3(0.1, 0, 0),
-                                         float3(0.1, 0.6, 0),
-                                         float3(0.1, -0.6, 0)]
+    var homePlayersPosition: [float3] = [float3(0.8, 0, 0.2),
+                                         float3(0.5, 0.9, 0.2),
+                                         float3(0.5, 0.6, 0.2),
+                                         float3(0.5, 0.3, 0.2),
+                                         float3(0.5, 0, 0.2),
+                                         float3(0.5, -0.3, 0.2),
+                                         float3(0.5, -0.6, 0.2),
+                                         float3(0.5, -0.9, 0.2),
+                                         float3(0.1, 0, 0.2),
+                                         float3(0.1, 0.6, 0.2),
+                                         float3(0.1, -0.6, 0.2)]
     
     init (_ id: String,_ scene: SCNScene, _ turn: Turn){
         self.id = id
