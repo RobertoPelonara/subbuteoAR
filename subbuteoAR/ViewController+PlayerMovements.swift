@@ -88,12 +88,16 @@ extension ViewController {
 
         var position = currentPlayer.position
         // print("before the force the position of \(currentPlayer.name) was \(position)")
+            
+           
         currentPlayer.physicsBody?.type = .dynamic
+        print("player is dynamic")
         currentPlayer.physicsBody?.isAffectedByGravity = true
-        
         currentPlayer.physicsBody?.applyForce(impulseVector, asImpulse: true)
+        self.isCurrentObjectMoving = true
         
         let _ = MPCManager.shared.sendData(gameDataToSend: shotToSend, toPeers: MPCManager.shared.session.connectedPeers)
+            
         // print("I sent the force: \(shotToSend.force)")
        
         }

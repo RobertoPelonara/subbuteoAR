@@ -45,6 +45,8 @@ class ViewController: UIViewController {
     var touchStartPositionScreen: CGPoint?
     var touchEndPositionScreen: CGPoint?
     
+    var isCurrentObjectMoving:Bool = false
+    
    // MARK: - ARKit Configuration Properties
     
     /// A type which manages gesture manipulation of virtual content in the scene.

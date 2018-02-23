@@ -20,9 +20,15 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
                 manager.tick()
             }
             
-            if (currentObject?.physicsBody?.velocity)! == SCNVector3(0,0,0) {
-                currentObject?.physicsBody?.type = .kinematic
-                currentObject = nil
+            guard let currentPlayer = self.currentObject else {return}
+            if currentPlayer.name != "campo" &&   (currentPlayer.physicsBody?.velocity)! == SCNVector3(0,0,0) && self.isCurrentObjectMoving{
+                
+                //currentPlayer.physicsBody?.type = .kinematic
+                
+                //print("player is kinematic")
+                print("velocity is \(currentPlayer.physicsBody?.velocity)")
+                self.currentObject = nil
+                self.isCurrentObjectMoving = false
             }
             
         }

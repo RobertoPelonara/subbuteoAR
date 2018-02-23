@@ -203,6 +203,7 @@ class Team {
                                               z: homePlayersPosition[i].z)
             
             playerNode?.simdWorldPosition = positionToApply
+            
             field.addChildNode(playerNode!)
             
             guard let playerN = playerNode else {continue}
