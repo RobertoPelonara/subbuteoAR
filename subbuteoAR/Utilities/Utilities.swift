@@ -7,6 +7,17 @@ Utility functions and type extensions used throughout the projects.
 
 import Foundation
 import ARKit
+import QuartzCore
+
+extension Float {
+
+    func map(from: ClosedRange<CGFloat>, to: ClosedRange<CGFloat>) -> Float {
+        return Float(CGFloat(self).map(from: from, to: to))
+    }
+}
+
+
+
 
 // MARK: - float4x4 extensions
 
@@ -55,8 +66,16 @@ extension CGPoint {
     var length: CGFloat {
 		return sqrt(x * x + y * y)
 	}
+    
+    
 }
 
+extension CGFloat {
+    func map(from from: ClosedRange<CGFloat>, to: ClosedRange<CGFloat>) -> CGFloat {
+        let result = ((self - from.upperBound) / (from.lowerBound - from.upperBound)) * (to.lowerBound - to.upperBound) + to.upperBound
+        return result
+    }
+}
 
 // MARK: - Vector Operations
 
@@ -113,6 +132,16 @@ func - (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
     return SCNVector3Make(left.x - right.x,
                           left.y - right.y,
                           left.z - right.z)
+}
+
+/**
+Implementa la distanza tra due CGPoint
+ */
+func distance (pointA: CGPoint, pointB: CGPoint) -> Float {
+    let direction = CGPoint(x: pointA.x - pointB.x,
+                            y: pointA.y - pointB.y)
+    let lenght = sqrtf(Float((direction.x * direction.x) + (direction.y * direction.y)))
+    return lenght
 }
 
 /**

@@ -40,8 +40,10 @@ class ViewController: UIViewController {
     var touchStartTime: TimeInterval?
     var touchEndTime: TimeInterval?
     var currentObject: SCNNode?
-    var velocityToApply: Float = 2.0
     
+    var velocityToApply: Float = 1.0
+    var touchStartPositionScreen: CGPoint?
+    var touchEndPositionScreen: CGPoint?
     
    // MARK: - ARKit Configuration Properties
     
@@ -148,9 +150,6 @@ class ViewController: UIViewController {
     @IBAction func placeFieldAction(_ sender: Any) {
         
         guard let fieldNode = sceneView.scene.rootNode.childNode(withName: "campo", recursively: true) else {return}
-        
-        if !canMoveField {fieldNode.geometry?.materials.first?.transparency = 0.75
-        } else {fieldNode.geometry?.materials.first?.transparency = 1}
         
         canMoveField = !canMoveField
         virtualObjectInteraction.canInteractWithObject = canMoveField
