@@ -170,17 +170,17 @@ class Team {
     
     
     
-    var homePlayersPosition: [float3] = [float3(0.8, 0, 0.1),
-                                         float3(0.5, 0.9, 0.1),
-                                         float3(0.5, 0.6, 0.1),
-                                         float3(0.5, 0.3, 0.1),
-                                         float3(0.5, 0, 0.1),
-                                         float3(0.5, -0.3, 0.1),
-                                         float3(0.5, -0.6, 0.1),
-                                         float3(0.5, -0.9, 0.1),
-                                         float3(0.1, 0, 0.1),
-                                         float3(0.1, 0.6, 0.1),
-                                         float3(0.1, -0.6, 0.1)]
+    var homePlayersPosition: [float3] = [float3(0.8, 0, 0),
+                                         float3(0.5, 0.9, 0),
+                                         float3(0.5, 0.6, 0),
+                                         float3(0.5, 0.3, 0),
+                                         float3(0.5, 0, 0),
+                                         float3(0.5, -0.3, 0),
+                                         float3(0.5, -0.6, 0),
+                                         float3(0.5, -0.9, 0),
+                                         float3(0.1, 0, 0),
+                                         float3(0.1, 0.6, 0),
+                                         float3(0.1, -0.6, 0)]
     
     init (_ id: String,_ scene: SCNScene, _ turn: Turn){
         self.id = id
