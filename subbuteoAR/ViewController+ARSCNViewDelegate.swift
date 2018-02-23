@@ -19,6 +19,12 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
             if let manager = (UIApplication.shared.delegate as! AppDelegate).gameManager {
                 manager.tick()
             }
+            
+            if (currentObject?.physicsBody?.velocity)! == SCNVector3(0,0,0) {
+                currentObject?.physicsBody?.type = .kinematic
+                currentObject = nil
+            }
+            
         }
 		
 	    }
