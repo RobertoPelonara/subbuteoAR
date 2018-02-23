@@ -75,12 +75,12 @@ extension ViewController {
         
         let distanceValue = distance(pointA: touchStartPositionScreen!, pointB: touchEndPositionScreen!)
         
-        print("DIOCRISTO INFAME \(distanceValue)")
+        print("DistanceValue:\(distanceValue)")
         
         let module = distanceValue.map(from: 0.0...700, to: 1.0...3.0)
         
         if module > 1.1 {
-        print("DIOCRISTO BASTARDO \(module)")
+            print("Modulo: \(module)")
         let impulseVector = direction * velocity * module
         
 //        let shotToSend = ShotData(force: impulseVector, nodeName: (currentObject?.name)!)
@@ -88,12 +88,14 @@ extension ViewController {
 
         var position = currentPlayer.position
         // print("before the force the position of \(currentPlayer.name) was \(position)")
-        currentPlayer.physicsBody?.applyForce(impulseVector, asImpulse: true)
+        currentPlayer.physicsBody?.type = .dynamic
+        currentPlayer.physicsBody?.isAffectedByGravity = true
         
+        currentPlayer.physicsBody?.applyForce(impulseVector, asImpulse: true)
         
         let _ = MPCManager.shared.sendData(gameDataToSend: shotToSend, toPeers: MPCManager.shared.session.connectedPeers)
         // print("I sent the force: \(shotToSend.force)")
-        currentObject = nil
+       
         }
     }
     
