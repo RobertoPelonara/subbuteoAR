@@ -39,6 +39,9 @@ class JoinViewController: UIViewController,MPCManagerDelegate,UITableViewDataSou
         tableView.tableFooterView = UIView()
         let color = UIColor(patternImage: #imageLiteral(resourceName: "gradiente"))
         youLabel.textColor = color
+        tableView.rowHeight = 168
+        self.tableView.separatorStyle = .none
+        
         
         
         
@@ -61,6 +64,8 @@ class JoinViewController: UIViewController,MPCManagerDelegate,UITableViewDataSou
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "joinID") as! JoinCell
         cell.label.text = MPCManager.shared.foundPeers[indexPath.row].displayName
+        cell.label.adjustsFontSizeToFitWidth = true
+        
         return cell
     }
     

@@ -233,24 +233,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ikQ-PE-fJd">
-                                <rect key="frame" x="0.0" y="64" width="142" height="603"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ikQ-PE-fJd">
+                                <rect key="frame" x="0.0" y="239" width="164" height="428"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="joinID" rowHeight="173" id="2ke-fT-qHf" customClass="JoinCell" customModule="subbuteoAR" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="142" height="173"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="joinID" rowHeight="168" id="2ke-fT-qHf" customClass="JoinCell" customModule="subbuteoAR" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1" width="164" height="168"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2ke-fT-qHf" id="13c-Iv-o7S">
-                                            <rect key="frame" x="0.0" y="0.0" width="142" height="172.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2ke-fT-qHf" id="13c-Iv-o7S">
+                                            <rect key="frame" x="0.0" y="0.0" width="164" height="167.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="maglia rossa" translatesAutoresizingMaskIntoConstraints="NO" id="Foh-mI-jQa">
-                                                    <rect key="frame" x="6" y="11" width="130" height="114"/>
+                                                    <rect key="frame" x="20" y="11" width="130" height="114"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vfi-5H-uoU" customClass="UIOutlinedLabel" customModule="subbuteoAR" customModuleProvider="target">
-                                                    <rect key="frame" x="50" y="133" width="49" height="32"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vfi-5H-uoU" customClass="UIOutlinedLabel" customModule="subbuteoAR" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="133" width="164" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="26"/>
                                                     <color key="textColor" red="0.77647058820000003" green="0.29803921570000003" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -258,6 +258,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="label" destination="Vfi-5H-uoU" id="czA-c9-wuZ"/>
                                             <outlet property="maglia" destination="Foh-mI-jQa" id="UYm-rr-Qsz"/>
@@ -265,16 +266,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="VS" translatesAutoresizingMaskIntoConstraints="NO" id="fDw-wD-3Rt">
-                                <rect key="frame" x="160" y="286" width="54" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="maglia gialla" translatesAutoresizingMaskIntoConstraints="NO" id="V7Q-r7-YRq">
-                                <rect key="frame" x="233" y="252" width="130" height="114"/>
+                                <rect key="frame" x="245" y="252" width="130" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfv-Ul-zMT" customClass="UIOutlinedLabel" customModule="subbuteoAR" customModuleProvider="target">
-                                <rect key="frame" x="277" y="374" width="49" height="32"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="VS" translatesAutoresizingMaskIntoConstraints="NO" id="fDw-wD-3Rt">
+                                <rect key="frame" x="172" y="310" width="54" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfv-Ul-zMT" customClass="UIOutlinedLabel" customModule="subbuteoAR" customModuleProvider="target">
+                                <rect key="frame" x="253" y="374" width="114" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="26"/>
                                 <color key="textColor" red="0.77647058823529413" green="0.29803921568627451" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -316,28 +317,41 @@
                                     <action selector="startAction:" destination="4mF-a7-eiD" eventType="touchUpInside" id="N15-Mm-zWv"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gZq-kX-dQp">
-                                <rect key="frame" x="0.0" y="64" width="375" height="211"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="maglia gialla" translatesAutoresizingMaskIntoConstraints="NO" id="DZl-q5-c7y">
+                                <rect key="frame" x="245" y="252" width="130" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="waitingID" id="9Ef-JZ-bVV">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Ef-JZ-bVV" id="9zQ-Wg-UkF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCE-Ik-f56" customClass="UIOutlinedLabel" customModule="subbuteoAR" customModuleProvider="target">
+                                <rect key="frame" x="245" y="374" width="130" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="26"/>
+                                <color key="textColor" red="0.77647058820000003" green="0.29803921570000003" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="VS" translatesAutoresizingMaskIntoConstraints="NO" id="lt8-EG-2e5">
+                                <rect key="frame" x="172" y="310" width="54" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="maglia rossa" translatesAutoresizingMaskIntoConstraints="NO" id="Nl2-nR-n7f">
+                                <rect key="frame" x="14" y="252" width="130" height="114"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQZ-gO-7Iz" customClass="UIOutlinedLabel" customModule="subbuteoAR" customModuleProvider="target">
+                                <rect key="frame" x="9" y="374" width="140" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="26"/>
+                                <color key="textColor" red="0.77647058820000003" green="0.29803921570000003" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="il8-3B-XKg"/>
                     </view>
                     <connections>
+                        <outlet property="homeLabel" destination="FQZ-gO-7Iz" id="TXc-hA-scP"/>
+                        <outlet property="opponentLabel" destination="zCE-Ik-f56" id="6I5-nm-jVo"/>
+                        <outlet property="opponentShirt" destination="DZl-q5-c7y" id="K9c-rA-AGO"/>
                         <outlet property="startButton" destination="yGq-Dx-xUV" id="POw-6a-GjY"/>
-                        <outlet property="tableView" destination="gZq-kX-dQp" id="aW5-bp-9X8"/>
                         <segue destination="BV1-FR-VrT" kind="show" identifier="waitToAR" id="X1t-zi-ShD"/>
                     </connections>
                 </viewController>

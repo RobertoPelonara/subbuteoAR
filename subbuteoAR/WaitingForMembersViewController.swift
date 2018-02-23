@@ -9,22 +9,23 @@
 import UIKit
 import MultipeerConnectivity
 
-class WaitingForMembersViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,MPCManagerDelegate{
+class WaitingForMembersViewController: UIViewController,MPCManagerDelegate{
    
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //outlet declaration
     
-    @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var opponentShirt: UIImageView!
+    @IBOutlet weak var opponentLabel: UIOutlinedLabel!
+    @IBOutlet weak var homeLabel: UIOutlinedLabel!
     
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //set the delegates
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        //set the delegate
         MPCManager.shared.delegate = self
         
         //title of navigation bar item
@@ -33,19 +34,24 @@ class WaitingForMembersViewController: UIViewController, UITableViewDelegate,UIT
         //start advertising
         MPCManager.shared.advertiser.startAdvertisingPeer()
         
-        // rimuove le celle bianche da sotto
-        tableView.tableFooterView = UIView()
-        
-        //intrappola il giocatore nella view
-        if !MPCManager.shared.isHost {
-            self.navigationItem.hidesBackButton = true
-            self.navigationItem.title = "Connected player"
-        }
-        
         //se non sei host nasconde il pulsante wait
         startButton.isHidden = !(MPCManager.shared.isHost)
         startButton.isEnabled = false
         startButton.alpha = 0.5
+        
+        self.opponentLabel.isHidden = true
+        self.opponentShirt.isHidden = true
+        self.opponentLabel.adjustsFontSizeToFitWidth = true
+        self.homeLabel.adjustsFontSizeToFitWidth = true
+        if !MPCManager.shared.isHost {
+            self.navigationItem.hidesBackButton = true
+            self.navigationItem.title = "Connected player"
+            self.opponentShirt.isHidden = false
+            self.opponentLabel.isHidden = false
+            self.opponentLabel.text = "You"
+            self.homeLabel.text = MPCManager.shared.session.connectedPeers[0].displayName
+        }
+        
   
     }
     
@@ -56,16 +62,16 @@ class WaitingForMembersViewController: UIViewController, UITableViewDelegate,UIT
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //conform to UITableViewDataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MPCManager.shared.session.connectedPeers.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "waitingID")!
-        
-        cell.textLabel?.text = MPCManager.shared.session.connectedPeers[indexPath.row].displayName
-        return cell
-    }
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return MPCManager.shared.session.connectedPeers.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "waitingID")!
+//
+//        cell.textLabel?.text = MPCManager.shared.session.connectedPeers[indexPath.row].displayName
+//        return cell
+//    }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     //conform to MPCManagerDelegate
@@ -73,11 +79,13 @@ class WaitingForMembersViewController: UIViewController, UITableViewDelegate,UIT
     
     func lostPeer() {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            
             if MPCManager.shared.session.connectedPeers.count == 0 {
                 self.navigationItem.title = "Waiting for players..."
                 self.startButton.isEnabled = false
                 self.startButton.alpha = 0.5
+                self.opponentShirt.isHidden = true
+                self.opponentLabel.isHidden = true
                 MPCManager.shared.advertiser.startAdvertisingPeer()
             }
         }
@@ -127,11 +135,14 @@ class WaitingForMembersViewController: UIViewController, UITableViewDelegate,UIT
     
     func connectedWithPeer(peerID: MCPeerID) {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            
             if MPCManager.shared.session.connectedPeers.count == 1{
                 self.navigationItem.title = "Connected player"
                 self.startButton.isEnabled = true
                 self.startButton.alpha = 1.0
+                self.opponentShirt.isHidden = false
+                self.opponentLabel.isHidden = false
+                self.opponentLabel.text = MPCManager.shared.session.connectedPeers[0].displayName
                 MPCManager.shared.advertiser.stopAdvertisingPeer()
             }
             
