@@ -16,9 +16,7 @@ class FieldSelectionViewCell: UICollectionViewCell{
 
 class FieldSelectionViewController: UICollectionViewController {
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
-    }
+  
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

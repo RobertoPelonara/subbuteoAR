@@ -185,7 +185,7 @@ class Team {
     init (_ id: String,_ scene: SCNScene, _ turn: Turn){
         self.id = id
         self.turn = turn
-        guard let field = scene.rootNode.childNode(withName: "campo", recursively: true)?.childNode(withName: "field", recursively: true) else {return}
+        guard let field = scene.rootNode.childNode(withName: "campo", recursively: true)?.childNode(withName: "floor", recursively: true) else {return}
         
         print("field exists!")
         
