@@ -153,14 +153,16 @@ class ViewController: UIViewController {
         
         guard let fieldNode = sceneView.scene.rootNode.childNode(withName: "campo", recursively: true) else {return}
         
+      
         canMoveField = !canMoveField
         virtualObjectInteraction.canInteractWithObject = canMoveField
         
         fieldNode.childNode(withName: "field", recursively: true)?.geometry?.materials.first?.transparency = 1
         
         self.sceneView.session.setWorldOrigin(relativeTransform: (fieldNode.parent?.simdWorldTransform)!)
+        
         fieldNode.parent?.simdWorldTransform = sceneView.scene.rootNode.simdWorldTransform
-        print("\(fieldNode.worldPosition)")
+    
         
         for recognizer in sceneView.gestureRecognizers! {
             recognizer.cancelsTouchesInView = false
