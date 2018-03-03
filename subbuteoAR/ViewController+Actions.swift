@@ -35,8 +35,8 @@ extension ViewController: UIGestureRecognizerDelegate {
                 print("PLACING")
                 self.hideObjectLoadingUI()
                 self.placeVirtualObject(loadedObject)
+                
                 let field = loadedObject.childNode(withName: "field", recursively: true)
-                field?.categoryBitMask = 2
                 field?.geometry?.materials.first?.diffuse.contents = GameManager.fieldTexture
 
                 self.addObjectButton.isHidden = true
