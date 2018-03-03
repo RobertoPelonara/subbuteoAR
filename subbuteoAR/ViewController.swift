@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
 
     @IBOutlet weak var placeFieldOutlet: UIButton!
+
+    @IBOutlet weak var containerView: UIView!
     
     var canMoveField = true
     var settingFieldPosition = false
@@ -47,7 +49,10 @@ class ViewController: UIViewController {
     
     var isCurrentObjectMoving:Bool = false
     
-   // MARK: - ARKit Configuration Properties
+    @IBOutlet weak var awayScoreView: UIImageView!
+    @IBOutlet weak var homeScoreView: UIImageView!
+    @IBOutlet weak var scoreVIew: UIImageView!
+    // MARK: - ARKit Configuration Properties
     
     /// A type which manages gesture manipulation of virtual content in the scene.
     lazy var virtualObjectInteraction = VirtualObjectInteraction(sceneView: sceneView)
@@ -72,6 +77,7 @@ class ViewController: UIViewController {
     }
     
     // MARK: - View Controller Life Cycle
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,16 +89,17 @@ class ViewController: UIViewController {
         setupCamera()
         sceneView.scene.rootNode.addChildNode(focusSquare)
         sceneView.scene.physicsWorld.contactDelegate = self
-        
+        sceneView.debugOptions = [.showPhysicsShapes]
 //        Set MPC Manager delegate
         MPCManager.shared.delegate = self
         
           // Hook up status view controller callback(s).
         statusViewController.restartExperienceHandler = { [unowned self] in
             self.restartExperience()
+           
+          
             
             // Set up "Ready" button
-            
             self.placeFieldOutlet.layer.cornerRadius = 500
         }
         
@@ -163,14 +170,19 @@ class ViewController: UIViewController {
         
         fieldNode.parent?.simdWorldTransform = sceneView.scene.rootNode.simdWorldTransform
     
-        
         for recognizer in sceneView.gestureRecognizers! {
             recognizer.cancelsTouchesInView = false
         }
         
         (UIApplication.shared.delegate as! AppDelegate).gameManager = GameManager.init(scene: self.sceneView.scene)
         
+        
         placeFieldOutlet.isHidden = true
+        
+        containerView.isHidden = true
+        scoreVIew.isHidden = false
+        awayScoreView.isHidden = false
+        homeScoreView.isHidden = false
         
     }
     
@@ -222,6 +234,19 @@ class ViewController: UIViewController {
         }
         alertController.addAction(restartAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func goal (image: UIImage, turn: Turn){
+        switch turn {
+        case .home:
+            homeScoreView.image = image
+            break
+        case .away:
+            awayScoreView.image = image
+            break
+ 
+        }
     }
 
 }

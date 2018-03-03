@@ -91,6 +91,9 @@ class GameManager {
                                   #imageLiteral(resourceName: "field6.png"),
                                   #imageLiteral(resourceName: "field7.png")]
     
+    
+    static var scoreGoal = [ #imageLiteral(resourceName: "score_0"), #imageLiteral(resourceName: "score_1"), #imageLiteral(resourceName: "score_2"), #imageLiteral(resourceName: "score_3")]
+    
     private var previousTimeInterval: TimeInterval
     private var currentTimeInterval: TimeInterval
     var gameScene: SCNScene?
@@ -104,7 +107,12 @@ class GameManager {
         let teamAway = Team( "away", scene, .away)
         let teamHome = Team( "home", scene, .home)
         teams = [.home: teamHome, .away: teamAway]
-//        ball = Ball(node: scene.rootNode.childNode(withName: "ball", recursively: true)!)
+        let ballScene = SCNScene(named: "Models.scnassets/Players + goal/ball.scn")
+        let ballNode = ballScene?.rootNode.childNode(withName: "ball", recursively: true)
+        ballNode?.simdPosition = float3(0.0, 0.0, 0.1)
+        scene.rootNode.childNode(withName: "field", recursively: true)?.addChildNode(ballNode!)
+        
+        ball = Ball(node: scene.rootNode.childNode(withName: "ball", recursively: true)!)
         previousTimeInterval = Date().timeIntervalSince1970
         currentTimeInterval = Date().timeIntervalSince1970
         
@@ -125,22 +133,49 @@ class GameManager {
         for team in teams!.values {
             team.tick()
         }
+        ball?.tick()
         
         
     }
     
     
-    
-    
+
     func goal (scoredBy: Turn){
+        
+        let window = UIApplication.shared.keyWindow
+        let vc = window?.rootViewController
+        var viewController: ViewController?
+        if (vc?.presentedViewController != nil)
+        {
+            viewController = vc?.presentedViewController as? ViewController;
+        }
+        
         switch scoredBy {
         case .home:
             scoreHome += 1
+//            Animation
+           
+            viewController?.goal(image: GameManager.scoreGoal[scoreHome], turn: .home)
+            
+            if scoreHome > 3 {
+//                Home Wins
+                
+            }
             break
         case .away:
             scoreAway += 1
+//            Animation
+            
+            viewController?.goal(image: GameManager.scoreGoal[scoreHome], turn: .away)
+            
+            if scoreAway > 3 {
+//                Away wins
+                
+            }
             break
         }
+        
+        
     }
     
     
@@ -170,22 +205,22 @@ class Team {
     
     
     
-    var homePlayersPosition: [float3] = [float3(0.8, 0, 0),
-                                         float3(0.5, 0.9, 0),
-                                         float3(0.5, 0.6, 0),
-                                         float3(0.5, 0.3, 0),
-                                         float3(0.5, 0, 0),
-                                         float3(0.5, -0.3, 0),
-                                         float3(0.5, -0.6, 0),
-                                         float3(0.5, -0.9, 0),
-                                         float3(0.1, 0, 0),
-                                         float3(0.1, 0.6, 0),
-                                         float3(0.1, -0.6, 0)]
+    var homePlayersPosition: [float3] = [float3(0.7, 0, 0.1),
+                                         float3(0.5, 0.9, 0.1),
+                                         float3(0.5, 0.6, 0.1),
+                                         float3(0.5, 0.3, 0.1),
+                                         float3(0.5, 0, 0.1),
+                                         float3(0.5, -0.3, 0.1),
+                                         float3(0.5, -0.6, 0.1),
+                                         float3(0.5, -0.9, 0.1),
+                                         float3(0.1, 0, 0.1),
+                                         float3(0.1, 0.6, 0.1),
+                                         float3(0.1, -0.6, 0.1)]
     
     init (_ id: String,_ scene: SCNScene, _ turn: Turn){
         self.id = id
         self.turn = turn
-        guard let field = scene.rootNode.childNode(withName: "campo", recursively: true)?.childNode(withName: "floor", recursively: true) else {return}
+        guard let field = scene.rootNode.childNode(withName: "campo", recursively: true) else {return}
         
         print("field exists!")
         
@@ -205,6 +240,8 @@ class Team {
             playerNode?.simdWorldPosition = positionToApply
             
             field.addChildNode(playerNode!)
+            
+            
             
             guard let playerN = playerNode else {continue}
             let playerToAdd = Player (node: playerN, team: self)
@@ -243,20 +280,20 @@ class Player {
     
     func tick () {
         
-        if gameManager == nil {
-            gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
-        }
-        
-        let collisionTest = gameManager?.gameScene?.physicsWorld.contactTest(with: node.physicsBody!, options: [SCNPhysicsWorld.TestOption.backfaceCulling : false]).first
-        if let collision = collisionTest?.nodeB {
-            if gameManager?.currentTurn != team.turn {
-                if collision == gameManager?.ball?.node {
-                    node.simdPosition = node.simdPosition - (collision.simdPosition - node.simdPosition)
-                    gameManager?.foul(committedBy: team.turn,
-                                      atPosition: collision.position)
-                }
-            }
-        }
+//        if gameManager == nil {
+//            gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
+//        }
+//
+//        let collisionTest = gameManager?.gameScene?.physicsWorld.contactTest(with: node.physicsBody!, options: [SCNPhysicsWorld.TestOption.backfaceCulling : false]).first
+//        if let collision = collisionTest?.nodeB {
+//            if gameManager?.currentTurn != team.turn {
+//                if collision == gameManager?.ball?.node {
+//                    node.simdPosition = node.simdPosition - (collision.simdPosition - node.simdPosition)
+//                    gameManager?.foul(committedBy: team.turn,
+//                                      atPosition: collision.position)
+//                }
+//            }
+//        }
         
     }
 }
@@ -269,14 +306,31 @@ class Player {
        
         init(node: SCNNode) {
             self.node = node
-            node.physicsBody?.type = .dynamic
+          node.physicsBody?.type = .dynamic
             transform = node.simdTransform
+            
         }
         
         func tick () {
             //        Check if position of the ball is off of the ground
             //        TODO: Clean this mess
            
+            let result = gameManager?.gameScene?.physicsWorld.contactTest(with: node.physicsBody!, options: nil).first
+            if let printValue = result?.nodeB.name {
+                print(printValue)
+                print("ENTRA IN TICK")
+            }
+            if let collision = result?.nodeA {
+                if collision.parent?.name == "goal"{
+                    gameManager?.goal(scoredBy: .home)
+                    print("entra in goal_away")
+        
+                }
+                else if collision.parent?.name == "goald"{
+                    gameManager?.goal(scoredBy: .away)
+                    print("entra in goal_away")
+                }
+            }
             
         }
         

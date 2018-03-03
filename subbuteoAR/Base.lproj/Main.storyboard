@@ -413,6 +413,18 @@
                                     <action selector="placeFieldAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Hlz-Mi-1gn"/>
                                 </connections>
                             </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="-" translatesAutoresizingMaskIntoConstraints="NO" id="rLr-aE-8oI">
+                                <rect key="frame" x="165" y="57" width="46" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="score_0" translatesAutoresizingMaskIntoConstraints="NO" id="aJN-tf-l4q" userLabel="Away">
+                                <rect key="frame" x="219" y="34" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="score_0" translatesAutoresizingMaskIntoConstraints="NO" id="Orj-Oe-bAY" userLabel="Home">
+                                <rect key="frame" x="87" y="34" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -439,9 +451,13 @@
                     </view>
                     <connections>
                         <outlet property="addObjectButton" destination="xcf-ic-uGo" id="uFa-W2-4Iu"/>
+                        <outlet property="awayScoreView" destination="aJN-tf-l4q" id="76c-rI-dpY"/>
                         <outlet property="blurView" destination="R5W-V8-6lY" id="oF2-lD-Srf"/>
+                        <outlet property="containerView" destination="tnx-rc-95S" id="tZD-Jb-0lQ"/>
+                        <outlet property="homeScoreView" destination="Orj-Oe-bAY" id="fdS-Ab-hci"/>
                         <outlet property="placeFieldOutlet" destination="za8-Y1-50H" id="6Eh-mi-TXP"/>
                         <outlet property="sceneView" destination="E6c-py-dvH" id="Gr4-Uw-Z4A"/>
+                        <outlet property="scoreVIew" destination="rLr-aE-8oI" id="2Lq-7K-BKP"/>
                         <outlet property="spinner" destination="3cb-dQ-oXx" id="rnE-Xe-cDE"/>
                     </connections>
                 </viewController>
@@ -469,6 +485,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="-" width="46" height="27"/>
         <image name="Ready" width="221" height="69"/>
         <image name="VS" width="100" height="60"/>
         <image name="add" width="48" height="48"/>
@@ -482,6 +499,7 @@
         <image name="maglia rossa" width="983" height="764"/>
         <image name="restart" width="20" height="23"/>
         <image name="restartPressed" width="20" height="23"/>
+        <image name="score_0" width="70" height="74"/>
         <image name="skinField" width="72" height="70"/>
         <image name="start" width="221" height="69"/>
     </resources>
