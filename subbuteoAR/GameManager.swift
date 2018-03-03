@@ -320,7 +320,7 @@ class Player {
                 print(printValue)
                 print("ENTRA IN TICK")
             }
-            if let collision = result?.nodeA {
+            if let collision = result?.nodeB {
                 if collision.parent?.name == "goal"{
                     gameManager?.goal(scoredBy: .home)
                     print("entra in goal_away")
