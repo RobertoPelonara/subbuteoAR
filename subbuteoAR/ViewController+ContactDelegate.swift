@@ -48,7 +48,7 @@ extension ViewController: SCNPhysicsContactDelegate {
     }
     
     func resetPositions() {
-        guard let manager = (UIApplication.shared.delegate as! AppDelegate).gameManager else {print("...no game manager!"); return}
+        guard let manager = (UIApplication.shared.delegate as! AppDelegate).gameManager else {return}
         manager.teams![.home]?.resetPositions(manager.gameScene!)
         manager.teams![.away]?.resetPositions(manager.gameScene!)
     }

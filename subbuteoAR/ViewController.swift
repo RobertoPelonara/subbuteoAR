@@ -104,12 +104,14 @@ class ViewController: UIViewController {
           // Hook up status view controller callback(s).
         statusViewController.restartExperienceHandler = { [unowned self] in
             self.restartExperience()
-           
-          
             
             // Set up "Ready" button
             self.placeFieldOutlet.layer.cornerRadius = 500
+
         }
+        
+        //"GOAL" image alpha=0 (for animation)
+        goalImage.alpha = 0
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showVirtualObjectSelectionViewController))
         // Set the delegate to ensure this gesture is only used when there are no virtual objects in the scene.
@@ -264,14 +266,18 @@ class ViewController: UIViewController {
         
         print("points: \(manager.scoreHome) - \(manager.scoreAway)")
         
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 2.0, delay: 2.0, options: [], animations: {
-                self.goalImage.isHidden = false
-            }) { (finished: Bool) in
-                self.goalImage.isHidden = true
-            }
-        }
+        self.goalImage.isHidden = false
         
+        DispatchQueue.main.async {
+            UIImageView.animate(withDuration: 1.5, animations: {
+                self.goalImage.alpha = 1
+            })
+            UIImageView.animate(withDuration: 1.5, delay: 2, animations: {
+                self.goalImage.alpha = 0
+            }, completion: { (finished) in
+                self.goalImage.isHidden = finished
+            })
+        }
     }
 
 }
