@@ -9,17 +9,18 @@ import SceneKit
 import Foundation
 
 extension ViewController: SCNPhysicsContactDelegate {
+    
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        guard let manager = (UIApplication.shared.delegate as! AppDelegate).gameManager else {print("...no game manager!"); return}
+        
         let nodes: [SCNNode] = [contact.nodeA, contact.nodeB]
-        var bNode: SCNNode?
-        var gNode: SCNNode?
         for node in nodes {
             if node.name == "ball" {bNode = node}
             else if node.name == "homeGoal" || node.name == "awayGoal" {gNode = node}
         }
-        guard let manager = (UIApplication.shared.delegate as! AppDelegate).gameManager else {print("...no game manager!"); return}
-        guard let ballNode = bNode else {print("no ball found!"); return}
-        guard let goalNode = gNode else {print("no goal found!"); return}
+        guard bNode != nil else {print("no ball found!"); makeNodesNil(); return}
+        guard let goalNode = gNode else {print("no goal found!"); makeNodesNil(); return}
+        
         print("COLLISION FOUND!")
         
         switch goalNode.name {
@@ -30,5 +31,15 @@ extension ViewController: SCNPhysicsContactDelegate {
             manager.goal(scoredBy: .home)
             print("goooal home!")
         }
+        
+        manager.teams![.home]?.resetTransforms()
+        manager.teams![.away]?.resetTransforms()
+        
     }
+    
+    func makeNodesNil() {
+        bNode = nil
+        gNode = nil
+    }
+    
 }
