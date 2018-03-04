@@ -49,12 +49,12 @@ class ViewController: UIViewController {
     var touchStartPositionScreen: CGPoint?
     var touchEndPositionScreen: CGPoint?
     
-    var isCurrentObjectMoving:Bool = false
+    var isCurrentObjectMoving: Bool = false
     
     var bNode: SCNNode?
     var gNode: SCNNode?
     
-    var gameSet = true
+    var gameSet = false
     
     @IBOutlet weak var awayScoreView: UIImageView!
     @IBOutlet weak var homeScoreView: UIImageView!
@@ -243,25 +243,28 @@ class ViewController: UIViewController {
     }
     
     
-    func goal (image: UIImage, turn: Turn){
-        switch turn {
+    func goal (_ team: Turn){
+        guard let manager = (UIApplication.shared.delegate as! AppDelegate).gameManager else {return}
+        
+        switch team {
         case .home:
-            homeScoreView.image = image
-            print("CAMBIO IMMAGINE")
-            break
+            print("goal home!")
+            if manager.scoreHome < 3 {manager.scoreHome += 1} else {return}
+            homeScoreView.image = manager.scoreGoal[manager.scoreHome]
         case .away:
-            awayScoreView.image = image
-              print("CAMBIO IMMAGINE")
-            break
- 
+            print("goal away!")
+            if manager.scoreAway < 3 {manager.scoreAway += 1} else {return}
+            awayScoreView.image = manager.scoreGoal[manager.scoreAway]
         }
         
+        print("points: \(manager.scoreHome) - \(manager.scoreAway)")
         
         UIView.animate(withDuration: 2.0, delay: 2.0, options: [], animations: {
                 self.goalImage.isHidden = false
         }) { (finished: Bool) in
                 self.goalImage.isHidden = true
         }
+        
     }
 
 }

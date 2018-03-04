@@ -27,16 +27,17 @@ extension ViewController: SCNPhysicsContactDelegate {
         
         switch goalNode.name {
         case "homeGoal":
-            manager.goal(scoredBy: .away)
-            print("goooal away!")
+            self.goal(.away)
+        case "awayGoal":
+            self.goal(.home)
         default:
-            manager.goal(scoredBy: .home)
-            print("goooal home!")
+            break
         }
         
         resetPositions()
         manager.placeBall(manager.gameScene!)
         gameSet = true
+        makeNodesNil()
     }
     
     func makeNodesNil() {

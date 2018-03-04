@@ -89,7 +89,7 @@ class GameManager {
                                   #imageLiteral(resourceName: "field7.png")]
     
     
-    static var scoreGoal = [ #imageLiteral(resourceName: "score_0"), #imageLiteral(resourceName: "score_1"), #imageLiteral(resourceName: "score_2"), #imageLiteral(resourceName: "score_3")]
+    var scoreGoal = [ #imageLiteral(resourceName: "score_0"), #imageLiteral(resourceName: "score_1"), #imageLiteral(resourceName: "score_2"), #imageLiteral(resourceName: "score_3")]
     
     private var previousTimeInterval: TimeInterval?
     private var currentTimeInterval: TimeInterval?
@@ -132,49 +132,6 @@ class GameManager {
         
         
     }
-    
-    
-
-    func goal (scoredBy: Turn){
-        
-        let window = UIApplication.shared.keyWindow
-        let vc = window?.rootViewController
-        var viewController: ViewController?
-        if (vc?.presentedViewController != nil){
-            viewController = vc?.presentedViewController as? ViewController;
-        }
-        
-        switch scoredBy {
-        case .home:
-            scoreHome += 1
-//            Animation
-            
-            if viewController == nil{
-                print("viewController è null")
-            }
-            
-            viewController?.goal(image: GameManager.scoreGoal[scoreHome], turn: .home)
-            
-            if scoreHome > 3 {
-//                Home Wins
-                
-            }
-            break
-        case .away:
-            scoreAway += 1
-//            Animation
-            viewController?.goal(image: GameManager.scoreGoal[scoreHome], turn: .away)
-            
-            if scoreAway > 3 {
-//                Away wins
-                
-            }
-            break
-        }
-        
-    }
-    
-    
     
     func foul (committedBy: Turn, atPosition: SCNVector3){
 //        switch committedBy {
@@ -323,22 +280,22 @@ class Player {
             //        Check if position of the ball is off of the ground
             //        TODO: Clean this mess
            
-            let result = gameManager?.gameScene?.physicsWorld.contactTest(with: node.physicsBody!, options: nil).first
-            if let printValue = result?.nodeB.name {
-                print(printValue)
-                print("ENTRA IN TICK")
-            }
-            if let collision = result?.nodeB {
-                if collision.parent?.name == "goal"{
-                    gameManager?.goal(scoredBy: .home)
-                    print("entra in goal_away")
-        
-                }
-                else if collision.parent?.name == "goald"{
-                    gameManager?.goal(scoredBy: .away)
-                    print("entra in goal_away")
-                }
-            }
+//            let result = gameManager?.gameScene?.physicsWorld.contactTest(with: node.physicsBody!, options: nil).first
+//            if let printValue = result?.nodeB.name {
+//                print(printValue)
+//                print("ENTRA IN TICK")
+//            }
+//            if let collision = result?.nodeB {
+//                if collision.parent?.name == "goal"{
+//                    gameManager?.goal(scoredBy: .home)
+//                    print("entra in goal_away")
+//        
+//                }
+//                else if collision.parent?.name == "goald"{
+//                    gameManager?.goal(scoredBy: .away)
+//                    print("entra in goal_away")
+//                }
+//            }
             
         }
         
