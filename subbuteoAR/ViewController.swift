@@ -59,6 +59,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var awayScoreView: UIImageView!
     @IBOutlet weak var homeScoreView: UIImageView!
     @IBOutlet weak var scoreVIew: UIImageView!
+    
     // MARK: - ARKit Configuration Properties
     
     /// A type which manages gesture manipulation of virtual content in the scene.
@@ -225,7 +226,7 @@ class ViewController: UIViewController {
         statusViewController.cancelScheduledMessage(for: .focusSquare)
 	}
     
-	// MARK: - Error handling
+    // MARK: - Error handling
     
     func displayErrorMessage(title: String, message: String) {
         // Blur the background.
@@ -250,19 +251,25 @@ class ViewController: UIViewController {
         case .home:
             print("goal home!")
             if manager.scoreHome < 3 {manager.scoreHome += 1} else {return}
-            homeScoreView.image = manager.scoreGoal[manager.scoreHome]
+            DispatchQueue.main.async {
+                self.homeScoreView.image = manager.scoreGoal[manager.scoreHome]
+            }
         case .away:
             print("goal away!")
             if manager.scoreAway < 3 {manager.scoreAway += 1} else {return}
-            awayScoreView.image = manager.scoreGoal[manager.scoreAway]
+            DispatchQueue.main.async {
+                self.awayScoreView.image = manager.scoreGoal[manager.scoreAway]
+            }
         }
         
         print("points: \(manager.scoreHome) - \(manager.scoreAway)")
         
-        UIView.animate(withDuration: 2.0, delay: 2.0, options: [], animations: {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 2.0, delay: 2.0, options: [], animations: {
                 self.goalImage.isHidden = false
-        }) { (finished: Bool) in
+            }) { (finished: Bool) in
                 self.goalImage.isHidden = true
+            }
         }
         
     }
