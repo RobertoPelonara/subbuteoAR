@@ -75,12 +75,12 @@ extension ViewController {
         
         let distanceValue = distance(pointA: touchStartPositionScreen!, pointB: touchEndPositionScreen!)
         
-        print("DistanceValue:\(distanceValue)")
+//        print("DistanceValue:\(distanceValue)")
         
         let module = distanceValue.map(from: 0.0...700, to: 1.0...3.0)
         
         if module > 1.1 {
-            print("Modulo: \(module)")
+//            print("Modulo: \(module)")
         let impulseVector = direction * velocity * module
         
 //        let shotToSend = ShotData(force: impulseVector, nodeName: (currentObject?.name)!)
@@ -91,7 +91,7 @@ extension ViewController {
             
            
         currentPlayer.physicsBody?.type = .dynamic
-        print("player is dynamic")
+//        print("player is dynamic")
         currentPlayer.physicsBody?.isAffectedByGravity = true
         currentPlayer.physicsBody?.applyForce(impulseVector, asImpulse: true)
         self.isCurrentObjectMoving = true

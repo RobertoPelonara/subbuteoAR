@@ -166,16 +166,15 @@ class ViewController: UIViewController {
         
         fieldNode.childNode(withName: "field", recursively: true)?.geometry?.materials.first?.transparency = 1
         
-        self.sceneView.session.setWorldOrigin(relativeTransform: (fieldNode.parent?.simdWorldTransform)!)
-        
-        fieldNode.parent?.simdWorldTransform = sceneView.scene.rootNode.simdWorldTransform
+//        self.sceneView.session.setWorldOrigin(relativeTransform: (fieldNode.parent?.simdWorldTransform)!)
+//        
+//        fieldNode.parent?.simdWorldTransform = sceneView.scene.rootNode.simdWorldTransform
     
         for recognizer in sceneView.gestureRecognizers! {
             recognizer.cancelsTouchesInView = false
         }
         
         (UIApplication.shared.delegate as! AppDelegate).gameManager = GameManager.init(scene: self.sceneView.scene)
-        
         
         placeFieldOutlet.isHidden = true
         
