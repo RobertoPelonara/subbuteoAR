@@ -9,7 +9,6 @@
 import Foundation
 import SceneKit
 
-
 struct GameData: Codable {
     
     var shouldIStart:String?
@@ -19,27 +18,27 @@ struct GameData: Codable {
     var force: SCNVector3?
     var nodeName: String?
     
-    
     init(dataType:String,shouldIStart:String){
         receivedDataType = dataType
         self.shouldIStart = shouldIStart
     }
+    
     init(dataType:String,team:String,FaulPosition position:SCNVector3){
         receivedDataType = dataType
         self.team = team
         self.position = position
     }
+    
     init(dataType:String,team:String){
         receivedDataType = dataType
         self.team = team
     }
+    
     init(dataType:String,force:SCNVector3,nodeName:String){
         receivedDataType = dataType
         self.force = force
         self.nodeName = nodeName
-        
     }
-    
     
 }
 
@@ -62,8 +61,6 @@ enum Turn {
     case home
     case away
 }
-
-
 
 class GameManager {
     
@@ -142,6 +139,8 @@ class GameManager {
 
     func goal (scoredBy: Turn){
         
+        print("GOLOLOLOL")
+        
         let window = UIApplication.shared.keyWindow
         let vc = window?.rootViewController
         var viewController: ViewController?
@@ -175,7 +174,6 @@ class GameManager {
             break
         }
         
-        
     }
     
     
@@ -201,9 +199,9 @@ class Team {
     var players: [Player] = []
     var id: String
     var turn: Turn
+    var startPlayerTransforms: [simd_float4x4]?
+    var playerNodes: [SCNNode]?
     private var gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
-    
-    
     
     var homePlayersPosition: [float3] = [float3(0.7, 0, 0.1),
                                          float3(0.5, 0.9, 0.1),
@@ -239,14 +237,22 @@ class Team {
             
             playerNode?.simdWorldPosition = positionToApply
             
+            startPlayerTransforms?.append((playerNode?.simdTransform)!)
+            playerNodes?.append(playerNode!)
             field.addChildNode(playerNode!)
             
+//            guard let playerN = playerNode else {continue}
+//            let playerToAdd = Player (node: playerN, team: self)
+//            players.append(playerToAdd)
             
-            
-            guard let playerN = playerNode else {continue}
-            let playerToAdd = Player (node: playerN, team: self)
-            players.append(playerToAdd)
-            
+        }
+    }
+    
+    func resetTransforms() {
+        guard let players = playerNodes else {print("failed position reset - no players"); return}
+        guard let transforms = startPlayerTransforms else {print("failed position reset - no transforms"); return}
+        for i in (0...(players.count - 1)) {
+            players[i].simdTransform = transforms[i]
         }
     }
     
@@ -331,6 +337,10 @@ class Player {
                     print("entra in goal_away")
                 }
             }
+            
+        }
+        
+        func resetElementsPosition() {
             
         }
         
