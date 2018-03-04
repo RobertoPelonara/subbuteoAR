@@ -11,7 +11,9 @@ import Foundation
 extension ViewController: SCNPhysicsContactDelegate {
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        guard let manager = (UIApplication.shared.delegate as! AppDelegate).gameManager else {print("...no game manager!"); return}
+        if gameSet == true {return}
+        
+        guard let manager = (UIApplication.shared.delegate as! AppDelegate).gameManager else {return}
         
         let nodes: [SCNNode] = [contact.nodeA, contact.nodeB]
         for node in nodes {
@@ -33,7 +35,8 @@ extension ViewController: SCNPhysicsContactDelegate {
         }
         
         resetPositions()
-        
+        manager.placeBall(manager.gameScene!)
+        gameSet = true
     }
     
     func makeNodesNil() {

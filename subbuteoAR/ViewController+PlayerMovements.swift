@@ -43,6 +43,7 @@ extension ViewController {
     
     func performLaunch () {
         // print("PERFORM LAUNCH")
+        gameSet = false
         
         guard let currentPlayer = currentObject else {
             // print("Player not found fra")

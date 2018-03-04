@@ -54,6 +54,8 @@ class ViewController: UIViewController {
     var bNode: SCNNode?
     var gNode: SCNNode?
     
+    var gameSet = true
+    
     @IBOutlet weak var awayScoreView: UIImageView!
     @IBOutlet weak var homeScoreView: UIImageView!
     @IBOutlet weak var scoreVIew: UIImageView!

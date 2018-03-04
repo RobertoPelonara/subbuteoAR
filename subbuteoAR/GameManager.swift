@@ -91,8 +91,8 @@ class GameManager {
     
     static var scoreGoal = [ #imageLiteral(resourceName: "score_0"), #imageLiteral(resourceName: "score_1"), #imageLiteral(resourceName: "score_2"), #imageLiteral(resourceName: "score_3")]
     
-    private var previousTimeInterval: TimeInterval
-    private var currentTimeInterval: TimeInterval
+    private var previousTimeInterval: TimeInterval?
+    private var currentTimeInterval: TimeInterval?
     var gameScene: SCNScene?
     
     static var fieldSize: CGSize = CGSize(width: 1.31 , height: 2.10)
@@ -103,10 +103,7 @@ class GameManager {
         let teamAway = Team( "away", scene, .away)
         let teamHome = Team( "home", scene, .home)
         teams = [.home: teamHome, .away: teamAway]
-        let ballScene = SCNScene(named: "Models.scnassets/Players + goal/ball.scn")
-        let ballNode = ballScene?.rootNode.childNode(withName: "ball", recursively: true)
-        ballNode?.simdPosition = float3(0.0, 0.0, 0.1)
-        scene.rootNode.childNode(withName: "field", recursively: true)?.addChildNode(ballNode!)
+        placeBall(scene)
         self.teams![.home]?.placeTeamPlayers(scene)
         self.teams![.away]?.placeTeamPlayers(scene)
         
@@ -126,7 +123,7 @@ class GameManager {
      */
     func tick () {
         currentTimeInterval = Date().timeIntervalSince1970
-        deltaTime = currentTimeInterval - previousTimeInterval
+        deltaTime = currentTimeInterval! - previousTimeInterval!
         
         for team in teams!.values {
             team.tick()
@@ -194,6 +191,16 @@ class GameManager {
 //            break
 //        }
     }
+    
+    func placeBall(_ scene: SCNScene) {
+        var ball = scene.rootNode.childNode(withName: "ball", recursively: true)
+        if ball != nil {ball?.removeFromParentNode()}
+        
+        let ballScene = SCNScene(named: "Models.scnassets/Players + goal/ball.scn")
+        ball = ballScene?.rootNode.childNode(withName: "ball", recursively: true)
+        ball?.simdPosition = float3(0.0, 0.0, 0.1)
+        scene.rootNode.childNode(withName: "field", recursively: true)?.addChildNode(ball!)
+    }
 }
 
 class Team {
@@ -221,13 +228,10 @@ class Team {
     
     func resetPositions(_ scene: SCNScene) {
         guard let field = scene.rootNode.childNode(withName: "campo", recursively: true) else  {print("failed position reset - no campo"); return}
-        guard let ball = scene.rootNode.childNode(withName: "ball", recursively: true) else  {print("failed position reset - no ball"); return}
     
         for node in field.childNodes {
             if (node.name?.hasPrefix("\(id)_"))! {node.removeFromParentNode()}
         }
-        
-        ball.removeFromParentNode()
         
         placeTeamPlayers(scene)
     }
