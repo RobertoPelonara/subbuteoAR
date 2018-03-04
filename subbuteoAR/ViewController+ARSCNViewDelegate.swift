@@ -19,18 +19,8 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
             if let manager = (UIApplication.shared.delegate as! AppDelegate).gameManager {
                 manager.tick()
             }
-            
-            
         }
-        
-       
-        
-        
-        
-        
-        
-        
-	    }
+    }
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
@@ -88,7 +78,7 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
         ]
         
         // Use `flatMap(_:)` to remove optional error messages.
-        let errorMessage = messages.flatMap({ $0 }).joined(separator: "\n")
+        let errorMessage = messages.compactMap({ $0 }).joined(separator: "\n")
         
         DispatchQueue.main.async {
             self.displayErrorMessage(title: "The AR session failed.", message: errorMessage)

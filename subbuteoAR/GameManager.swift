@@ -97,7 +97,6 @@ class GameManager {
     
     static var fieldSize: CGSize = CGSize(width: 1.31 , height: 2.10)
     
-    
     init (scene: SCNScene) {
         gameScene = scene
         
@@ -108,6 +107,8 @@ class GameManager {
         let ballNode = ballScene?.rootNode.childNode(withName: "ball", recursively: true)
         ballNode?.simdPosition = float3(0.0, 0.0, 0.1)
         scene.rootNode.childNode(withName: "field", recursively: true)?.addChildNode(ballNode!)
+        self.teams![.home]?.placeTeamPlayers(scene)
+        self.teams![.away]?.placeTeamPlayers(scene)
         
         ball = Ball(node: scene.rootNode.childNode(withName: "ball", recursively: true)!)
         previousTimeInterval = Date().timeIntervalSince1970
@@ -138,8 +139,6 @@ class GameManager {
     
 
     func goal (scoredBy: Turn){
-        
-        print("GOLOLOLOL")
         
         let window = UIApplication.shared.keyWindow
         let vc = window?.rootViewController
@@ -199,9 +198,7 @@ class Team {
     var players: [Player] = []
     var id: String
     var turn: Turn
-    var startPlayerTransforms: [simd_float4x4]?
-    var playerNodes: [SCNNode]?
-    private var gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
+    var gameManager = (UIApplication.shared.delegate as! AppDelegate).gameManager
     
     var homePlayersPosition: [float3] = [float3(0.7, 0, 0.1),
                                          float3(0.5, 0.9, 0.1),
@@ -218,9 +215,23 @@ class Team {
     init (_ id: String,_ scene: SCNScene, _ turn: Turn){
         self.id = id
         self.turn = turn
-        guard let field = scene.rootNode.childNode(withName: "campo", recursively: true) else {return}
+    }
+    
+    func resetPositions(_ scene: SCNScene) {
+        guard let field = scene.rootNode.childNode(withName: "campo", recursively: true) else  {print("failed position reset - no campo"); return}
+        guard let ball = scene.rootNode.childNode(withName: "ball", recursively: true) else  {print("failed position reset - no ball"); return}
+    
+        for node in field.childNodes {
+            if (node.name?.hasPrefix("\(id)_"))! {node.removeFromParentNode()}
+        }
         
-        print("field exists!")
+        ball.removeFromParentNode()
+        
+        placeTeamPlayers(scene)
+    }
+    
+    func placeTeamPlayers(_ scene: SCNScene) {
+        guard let field = scene.rootNode.childNode(withName: "campo", recursively: true) else  {print("failed position reset - no campo"); return}
         
         for i in 0...10 {
             let playerScene = SCNScene(named: "Models.scnassets/Players + goal/\(id).scn")
@@ -237,22 +248,7 @@ class Team {
             
             playerNode?.simdWorldPosition = positionToApply
             
-            startPlayerTransforms?.append((playerNode?.simdTransform)!)
-            playerNodes?.append(playerNode!)
             field.addChildNode(playerNode!)
-            
-//            guard let playerN = playerNode else {continue}
-//            let playerToAdd = Player (node: playerN, team: self)
-//            players.append(playerToAdd)
-            
-        }
-    }
-    
-    func resetTransforms() {
-        guard let players = playerNodes else {print("failed position reset - no players"); return}
-        guard let transforms = startPlayerTransforms else {print("failed position reset - no transforms"); return}
-        for i in (0...(players.count - 1)) {
-            players[i].simdTransform = transforms[i]
         }
     }
     
@@ -346,10 +342,6 @@ class Player {
 //                }
 //            }
 //
-        }
-        
-        func resetElementsPosition() {
-            
         }
         
     }

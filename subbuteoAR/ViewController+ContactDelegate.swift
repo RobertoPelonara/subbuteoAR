@@ -18,8 +18,8 @@ extension ViewController: SCNPhysicsContactDelegate {
             if node.name == "ball" {bNode = node}
             else if node.name == "homeGoal" || node.name == "awayGoal" {gNode = node}
         }
-        guard bNode != nil else {print("no ball found!"); makeNodesNil(); return}
-        guard let goalNode = gNode else {print("no goal found!"); makeNodesNil(); return}
+        guard bNode != nil else {makeNodesNil(); return}
+        guard let goalNode = gNode else {makeNodesNil(); return}
         
         print("COLLISION FOUND!")
         
@@ -32,14 +32,19 @@ extension ViewController: SCNPhysicsContactDelegate {
             print("goooal home!")
         }
         
-        manager.teams![.home]?.resetTransforms()
-        manager.teams![.away]?.resetTransforms()
+        resetPositions()
         
     }
     
     func makeNodesNil() {
         bNode = nil
         gNode = nil
+    }
+    
+    func resetPositions() {
+        guard let manager = (UIApplication.shared.delegate as! AppDelegate).gameManager else {print("...no game manager!"); return}
+        manager.teams![.home]?.resetPositions(manager.gameScene!)
+        manager.teams![.away]?.resetPositions(manager.gameScene!)
     }
     
 }
