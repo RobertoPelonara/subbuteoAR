@@ -139,13 +139,10 @@ class GameManager {
 
     func goal (scoredBy: Turn){
         
-        print("GOLOLOLOL")
-        
         let window = UIApplication.shared.keyWindow
         let vc = window?.rootViewController
         var viewController: ViewController?
-        if (vc?.presentedViewController != nil)
-        {
+        if (vc?.presentedViewController != nil){
             viewController = vc?.presentedViewController as? ViewController;
         }
         
@@ -153,7 +150,11 @@ class GameManager {
         case .home:
             scoreHome += 1
 //            Animation
-           
+            
+            if viewController == nil{
+                print("viewController è null")
+            }
+            
             viewController?.goal(image: GameManager.scoreGoal[scoreHome], turn: .home)
             
             if scoreHome > 3 {
@@ -164,7 +165,6 @@ class GameManager {
         case .away:
             scoreAway += 1
 //            Animation
-            
             viewController?.goal(image: GameManager.scoreGoal[scoreHome], turn: .away)
             
             if scoreAway > 3 {

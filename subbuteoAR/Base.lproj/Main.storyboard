@@ -417,6 +417,10 @@
                                 <rect key="frame" x="165" y="57" width="46" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="goal" translatesAutoresizingMaskIntoConstraints="NO" id="dfe-54-egR">
+                                <rect key="frame" x="67" y="274" width="240" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="score_0" translatesAutoresizingMaskIntoConstraints="NO" id="aJN-tf-l4q" userLabel="Away">
                                 <rect key="frame" x="219" y="34" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -454,6 +458,7 @@
                         <outlet property="awayScoreView" destination="aJN-tf-l4q" id="76c-rI-dpY"/>
                         <outlet property="blurView" destination="R5W-V8-6lY" id="oF2-lD-Srf"/>
                         <outlet property="containerView" destination="tnx-rc-95S" id="tZD-Jb-0lQ"/>
+                        <outlet property="goalImage" destination="dfe-54-egR" id="P3d-A8-818"/>
                         <outlet property="homeScoreView" destination="Orj-Oe-bAY" id="fdS-Ab-hci"/>
                         <outlet property="placeFieldOutlet" destination="za8-Y1-50H" id="6Eh-mi-TXP"/>
                         <outlet property="sceneView" destination="E6c-py-dvH" id="Gr4-Uw-Z4A"/>
@@ -493,6 +498,7 @@
         <image name="backgroundJoinHome" width="375" height="667"/>
         <image name="but_background" width="176" height="133"/>
         <image name="field2.png" width="942" height="589"/>
+        <image name="goal" width="283" height="75"/>
         <image name="host" width="221" height="69"/>
         <image name="join" width="221" height="70"/>
         <image name="maglia gialla" width="983" height="764"/>

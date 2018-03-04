@@ -25,6 +25,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var containerView: UIView!
     
+    @IBOutlet weak var goalImage: UIImageView!
+    
     var canMoveField = true
     var settingFieldPosition = false
     
@@ -243,11 +245,20 @@ class ViewController: UIViewController {
         switch turn {
         case .home:
             homeScoreView.image = image
+            print("CAMBIO IMMAGINE")
             break
         case .away:
             awayScoreView.image = image
+              print("CAMBIO IMMAGINE")
             break
  
+        }
+        
+        
+        UIView.animate(withDuration: 2.0, delay: 2.0, options: [], animations: {
+                self.goalImage.isHidden = false
+        }) { (finished: Bool) in
+                self.goalImage.isHidden = true
         }
     }
 
