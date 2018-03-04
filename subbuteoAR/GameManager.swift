@@ -143,8 +143,7 @@ class GameManager {
         let window = UIApplication.shared.keyWindow
         let vc = window?.rootViewController
         var viewController: ViewController?
-        if (vc?.presentedViewController != nil)
-        {
+        if (vc?.presentedViewController != nil){
             viewController = vc?.presentedViewController as? ViewController;
         }
         
@@ -152,7 +151,11 @@ class GameManager {
         case .home:
             scoreHome += 1
 //            Animation
-           
+            
+            if viewController == nil{
+                print("viewController è null")
+            }
+            
             viewController?.goal(image: GameManager.scoreGoal[scoreHome], turn: .home)
             
             if scoreHome > 3 {
@@ -163,7 +166,6 @@ class GameManager {
         case .away:
             scoreAway += 1
 //            Animation
-            
             viewController?.goal(image: GameManager.scoreGoal[scoreHome], turn: .away)
             
             if scoreAway > 3 {
@@ -317,31 +319,23 @@ class Player {
             //        Check if position of the ball is off of the ground
             //        TODO: Clean this mess
            
-//            guard let result = gameManager?.gameScene?.physicsWorld.contactTest(with: node.physicsBody!, options: nil) else {return}
-//            print("result exists!")
-//            var ballCollisionResult: SCNPhysicsContact?
-//            for i in result {
-//                print("COLLISION 1 - \(i.nodeA.name)\nCOLLISION2 - \(i.nodeB.name)")
-//                if i.nodeA.name == "ball" || i.nodeB.name == "ball" {
-//                    ballCollisionResult = i
-//                }
-//            }
-//            if ballCollisionResult != nil {
-//                print("\(ballCollisionResult?.nodeA.name) + \(ballCollisionResult?.nodeB.name)")
-//                print("ENTRA IN TICK")
-//            } else {return}
-//            if let collision = ballCollisionResult?.nodeA {
-//                if collision.parent?.name == "goal"{
-//                    gameManager?.goal(scoredBy: .home)
-//                    print("entra in goal_away")
-//
-//                }
-//                else if collision.parent?.name == "goald"{
-//                    gameManager?.goal(scoredBy: .away)
-//                    print("entra in goal_away")
-//                }
-//            }
-//
+            let result = gameManager?.gameScene?.physicsWorld.contactTest(with: node.physicsBody!, options: nil).first
+            if let printValue = result?.nodeB.name {
+                print(printValue)
+                print("ENTRA IN TICK")
+            }
+            if let collision = result?.nodeB {
+                if collision.parent?.name == "goal"{
+                    gameManager?.goal(scoredBy: .home)
+                    print("entra in goal_away")
+        
+                }
+                else if collision.parent?.name == "goald"{
+                    gameManager?.goal(scoredBy: .away)
+                    print("entra in goal_away")
+                }
+            }
+            
         }
         
     }
